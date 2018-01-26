@@ -1,5 +1,6 @@
 package com.droidbots.phonemate;
 
+import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
@@ -12,7 +13,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener {
+        implements NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener,
+        PrivacyFragment.OnFragmentInteractionListener, ProfileFragment.OnFragmentInteractionListener,
+        RecommendationFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener,
+        FeedbackFragment.OnFragmentInteractionListener{
 
     NavigationView navigationView;
 
@@ -97,5 +101,10 @@ public class HomeActivity extends AppCompatActivity
         DrawerLayout drawer = findViewById(R.id.drawer_layout);
         drawer.closeDrawer(GravityCompat.START);
         return true;
+    }
+
+    @Override
+    public void onFragmentInteraction(Uri uri) {
+
     }
 }

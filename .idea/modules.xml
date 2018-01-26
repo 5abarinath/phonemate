@@ -2,8 +2,8 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/PhoneMate.iml" filepath="$PROJECT_DIR$/PhoneMate.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/phonemate.iml" filepath="$PROJECT_DIR$/phonemate.iml" />
     </modules>
   </component>
 </project>
