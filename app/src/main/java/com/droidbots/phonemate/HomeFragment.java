@@ -3,7 +3,10 @@ package com.droidbots.phonemate;
 import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.design.widget.TabLayout;
 import android.support.v4.app.Fragment;
+import android.support.v4.view.PagerAdapter;
+import android.support.v4.view.ViewPager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -39,7 +42,17 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View result = inflater.inflate(R.layout.fragment_home, container, false);
+        ViewPager pager = (ViewPager) result.findViewById(R.id.pagerName);
+        pager.setAdapter(buildAdapter());
+
+        TabLayout tabLayout = (TabLayout) result.findViewById(R.id.tab_layout);
+        tabLayout.setupWithViewPager(pager, true);
+        return result;
+    }
+
+    private PagerAdapter buildAdapter() {
+        return(new QuestionSlidePagerAdapter(getChildFragmentManager()));
     }
 
     // TODO: Rename method, update argument and hook method into UI event
