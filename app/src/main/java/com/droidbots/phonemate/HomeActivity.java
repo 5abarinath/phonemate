@@ -13,10 +13,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class HomeActivity extends AppCompatActivity
-        implements NavigationView.OnNavigationItemSelectedListener, HomeFragment.OnFragmentInteractionListener,
+        implements NavigationView.OnNavigationItemSelectedListener, QuestionnaireFragment.OnFragmentInteractionListener,
         PrivacyFragment.OnFragmentInteractionListener, ProfileFragment.OnFragmentInteractionListener,
         RecommendationFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener,
-        FeedbackFragment.OnFragmentInteractionListener{
+        FeedbackFragment.OnFragmentInteractionListener, HomeFragment.OnFragmentInteractionListener{
 
     NavigationView navigationView;
 
@@ -35,6 +35,15 @@ public class HomeActivity extends AppCompatActivity
 
         navigationView = findViewById(R.id.nav_view);
         navigationView.setNavigationItemSelectedListener(this);
+        navigationView.getMenu().getItem(0).setChecked(true);
+
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content_home, HomeFragment.newInstance())
+                .commit();
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.content_home, QuestionnaireFragment.newInstance())
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override
@@ -79,6 +88,7 @@ public class HomeActivity extends AppCompatActivity
         boolean isFragment = true;
         if (id == R.id.nav_home) {
             fragment = HomeFragment.newInstance();
+            //TODO shared preference
         } else if (id == R.id.nav_profile) {
             fragment = ProfileFragment.newInstance();
         } else if (id == R.id.nav_recommendation) {
@@ -88,13 +98,12 @@ public class HomeActivity extends AppCompatActivity
         } else if (id == R.id.nav_settings) {
             fragment = SettingsFragment.newInstance();
         } else if (id == R.id.nav_privacy) {
-            fragment = ProfileFragment.newInstance();
+            fragment = PrivacyFragment.newInstance();
         }
 
         if(isFragment) {
             getSupportFragmentManager().beginTransaction()
                     .replace(R.id.content_home, fragment)
-                    .addToBackStack(null)
                     .commit();
         }
 
