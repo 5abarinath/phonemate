@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,6 +16,10 @@ import android.view.ViewGroup;
 
 public class HomeFragment extends Fragment {
     private HomeFragment.OnFragmentInteractionListener mListener;
+    private RecyclerView mRecyclerView;
+    private RecyclerView.LayoutManager mLayoutManager;
+    private MyRecyclerViewAdapter mAdapter;
+    private PhoneDetails[] mDataset;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -34,7 +40,21 @@ public class HomeFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_home, container, false);
+        View fragment = inflater.inflate(R.layout.fragment_home, container, false);
+        mRecyclerView = (RecyclerView) fragment.findViewById(R.id.recycler_view);
+        mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+
+        //TODO retrofit
+        mDataset = new PhoneDetails[5];
+        for(int i=0; i<5; i++) {
+            mDataset[i] = new PhoneDetails();
+            mDataset[i].setThumbnail(getResources().getDrawable(R.drawable.oneplus5));
+            mDataset[i].setDeviceName("One Plus 5");
+        }
+        mAdapter = new MyRecyclerViewAdapter(mDataset);
+        mRecyclerView.setAdapter(mAdapter);
+        return fragment;
     }
 
     // TODO: Rename method, update argument and hook method into UI event

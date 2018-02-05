@@ -20,16 +20,93 @@
     <string name="hello_settings_fragment">Hello settings fragment</string>
     <string name="hello_privacy_fragment">Hello privacy fragment</string>
 
-    <string name="lorem_ipsum">Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu cursus massa. Quisque nec urna nisl. Morbi id tincidunt orci. Vestibulum aliquam posuere mi finibus imperdiet. Integer tincidunt erat non nisl efficitur faucibus. Pellentesque ut volutpat orci, in malesuada elit. Quisque dapibus, sapien non ultricies luctus, mauris magna viverra lorem, sed vulputate sapien quam sed ex. Cras fermentum mattis commodo. Proin pharetra scelerisque justo, vitae vulputate sapien tristique id. Mauris sollicitudin venenatis vehicula. Vivamus efficitur blandit mauris, id maximus dui pellentesque eu. Nam vel mattis arcu. Aliquam porttitor ex in dolor vestibulum, sodales rutrum tellus iaculis. Cras vestibulum risus quis dui laoreet auctor. Nam vel sem ex. Maecenas ut tempus neque.
+    <string name="category0">Category</string>
+    <string name="question0">Question 1</string>
+    <string-array name="options0">
+        <item>Option 1&#8211;1</item>
+        <item>Option 1&#8211;2</item>
+        <item>Option 1&#8211;3</item>
+        <item>Option 1&#8211;4</item>
+    </string-array>
 
-Phasellus elementum consequat quam, eget elementum velit pellentesque non. Etiam imperdiet, sapien sed rhoncus pellentesque, felis purus fermentum lectus, ac dignissim eros purus nec dui. In eleifend tincidunt nulla eget consectetur. Donec malesuada erat eget libero ullamcorper imperdiet. Integer nec molestie ligula. Maecenas blandit, velit a faucibus dapibus, sapien augue posuere magna, quis malesuada sem est a magna. Etiam vitae varius augue. Suspendisse vitae orci purus. Pellentesque nec leo rhoncus, consectetur metus facilisis, porta lorem. Praesent faucibus luctus nisi, in porta nulla tincidunt commodo. Duis suscipit lectus arcu, in hendrerit est rutrum ut. Maecenas nec vestibulum sapien. Quisque euismod dictum est. Aliquam fringilla neque quis eros porttitor laoreet.
+    <string name="category1">Category</string>
+    <string name="question1">Question 2</string>
+    <string-array name="options1">
+        <item>Option 2&#8211;1</item>
+        <item>Option 2&#8211;2</item>
+        <item>Option 2&#8211;3</item>
+        <item>Option 2&#8211;4</item>
+    </string-array>
 
-Morbi in tortor mattis, rhoncus elit sed, pharetra ipsum. Vivamus tincidunt condimentum sem id sodales. Mauris dapibus tincidunt risus, non egestas justo sollicitudin ut. Nullam at erat semper, volutpat nisl eget, lobortis dui. Suspendisse potenti. Maecenas quam enim, tempus nec feugiat non, tincidunt eu sapien. Nunc dolor ex, gravida sit amet sodales vitae, viverra quis dui. Pellentesque nisl augue, bibendum sit amet venenatis et, sodales ac magna. Integer aliquam fermentum sapien eget tempor. Curabitur non venenatis odio.
+    <string name="category2">Category</string>
+    <string name="question2">Question 3</string>
+    <string-array name="options2">
+        <item>Option 3&#8211;1</item>
+        <item>Option 3&#8211;2</item>
+        <item>Option 3&#8211;3</item>
+        <item>Option 3&#8211;4</item>
+    </string-array>
 
-Nulla lobortis libero quis porta lobortis. Pellentesque habitant morbi tristique senectus et netus et malesuada fames ac turpis egestas. Nullam dictum sollicitudin risus. Donec ut justo nibh. Nullam sit amet orci sed massa consectetur pretium at ut nibh. Pellentesque iaculis libero in dictum porttitor. Praesent tristique tincidunt dui, a pretium nibh vehicula eu. Suspendisse eleifend diam at laoreet congue. Morbi sollicitudin ante dui, nec blandit dui tincidunt et. Maecenas suscipit ullamcorper massa in mollis. Ut blandit mollis vehicula.
+    <string name="category3">Category</string>
+    <string name="question3">Question 4</string>
+    <string-array name="options3">
+        <item>Option 4&#8211;1</item>
+        <item>Option 4&#8211;2</item>
+        <item>Option 4&#8211;3</item>
+        <item>Option 4&#8211;4</item>
+    </string-array>
 
-Suspendisse sed tortor sed eros tincidunt ultricies. Vestibulum maximus quam nec nisl pharetra, eget eleifend nulla dapibus. Quisque vulputate lacus nec magna convallis, eu condimentum risus aliquam. Donec scelerisque luctus quam. Sed in elit odio. Cras tristique sagittis ex, eu pulvinar purus sagittis non. Pellentesque ut ligula vitae ipsum tempor sodales eu eu augue. In volutpat mollis condimentum. Mauris fermentum elit ultrices, sollicitudin leo vitae, ultricies est. Nam ac sapien nibh. Suspendisse odio erat, venenatis sit amet orci quis, faucibus eleifend elit. Donec gravida elit et massa varius, a aliquam mi tristique. Aenean venenatis tempus est, at rutrum dui pharetra eget. Nam condimentum, felis rhoncus elementum cursus, quam arcu suscipit diam, tempus volutpat augue turpis et massa. Sed suscipit nunc et nulla congue, sit amet elementum orci condimentum.</string>
+    <string name="category4">Category</string>
+    <string name="question4">Question 5</string>
+    <string-array name="options4">
+        <item>Option 5&#8211;1</item>
+        <item>Option 5&#8211;2</item>
+        <item>Option 5&#8211;3</item>
+        <item>Option 5&#8211;4</item>
+    </string-array>
 
-    <string name="lorem_ipsum2">
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu cursus massa. Quisque nec urna nisl. Morbi id tincidunt orci. Vestibulum aliquam posuere mi finibus imperdiet. Integer tincidunt erat non nisl efficitur faucibus. Pellentesque ut volutpat orci, in malesuada elit. Quisque dapibus, sapien non ultricies luctus, mauris magna viverra lorem, sed vulputate sapien quam sed ex. Cras fermentum mattis commodo. Proin pharetra scelerisque justo, vitae vulputate sapien tristique id. Mauris sollicitudin venenatis vehicula. Vivamus efficitur blandit mauris, id maximus dui pellentesque eu. Nam vel mattis arcu. Aliquam porttitor ex in dolor vestibulum, sodales rutrum tellus iaculis. Cras vestibulum risus quis dui laoreet auctor. Nam vel sem ex. Maecenas ut tempus neque.</string>
+    <string name="category5">Category</string>
+    <string name="question5">Question 6</string>
+    <string-array name="options5">
+        <item>Option 6&#8211;1</item>
+        <item>Option 6&#8211;2</item>
+        <item>Option 6&#8211;3</item>
+        <item>Option 6&#8211;4</item>
+    </string-array>
+
+    <string name="category6">Category</string>
+    <string name="question6">Question 7</string>
+    <string-array name="options6">
+        <item>Option 7&#8211;1</item>
+        <item>Option 7&#8211;2</item>
+        <item>Option 7&#8211;3</item>
+        <item>Option 7&#8211;4</item>
+    </string-array>
+
+    <string name="category7">Category</string>
+    <string name="question7">Question 8</string>
+    <string-array name="options7">
+        <item>Option 8&#8211;1</item>
+        <item>Option 8&#8211;2</item>
+        <item>Option 8&#8211;3</item>
+        <item>Option 8&#8211;4</item>
+    </string-array>
+
+    <string name="category8">Category</string>
+    <string name="question8">Question 9</string>
+    <string-array name="options8">
+        <item>Option 9&#8211;1</item>
+        <item>Option 9&#8211;2</item>
+        <item>Option 9&#8211;3</item>
+        <item>Option 9&#8211;4</item>
+    </string-array>
+
+    <string name="category9">Category</string>
+    <string name="question9">Question 10</string>
+    <string-array name="options9">
+        <item>Option 10&#8211;1</item>
+        <item>Option 10&#8211;2</item>
+        <item>Option 10&#8211;3</item>
+        <item>Option 10&#8211;4</item>
+    </string-array>
 </resources>
