@@ -16,10 +16,7 @@ import android.view.ViewGroup;
 
 public class HomeFragment extends Fragment {
     private HomeFragment.OnFragmentInteractionListener mListener;
-    private RecyclerView mRecyclerView;
-    private RecyclerView.LayoutManager mLayoutManager;
-    private MyRecyclerViewAdapter mAdapter;
-    private PhoneDetails[] mDataset;
+    private Smartphone[] top5Dataset, featuredDataset, newDataset;
 
     public HomeFragment() {
         // Required empty public constructor
@@ -41,18 +38,33 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View fragment = inflater.inflate(R.layout.fragment_home, container, false);
-        mRecyclerView = (RecyclerView) fragment.findViewById(R.id.recycler_view);
-        mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        RecyclerView mRecyclerView = (RecyclerView) fragment.findViewById(R.id.recycler_view_top5);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         mRecyclerView.setLayoutManager(mLayoutManager);
 
         //TODO retrofit
-        mDataset = new PhoneDetails[5];
+        top5Dataset = new Smartphone[5];
         for(int i=0; i<5; i++) {
-            mDataset[i] = new PhoneDetails();
-            mDataset[i].setThumbnail(getResources().getDrawable(R.drawable.oneplus5));
-            mDataset[i].setDeviceName("One Plus 5");
+            top5Dataset[i] = new Smartphone();
+            top5Dataset[i].setThumbnail(getResources().getDrawable(R.drawable.oneplus5));
+            top5Dataset[i].setDeviceName("One Plus 5");
         }
-        mAdapter = new MyRecyclerViewAdapter(mDataset);
+        featuredDataset = top5Dataset;
+        newDataset = top5Dataset;
+
+        MyRecyclerViewAdapter mAdapter = new MyRecyclerViewAdapter(top5Dataset, false);
+        mRecyclerView.setAdapter(mAdapter);
+
+        mRecyclerView = (RecyclerView) fragment.findViewById(R.id.recycler_view_featured);
+        mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new MyRecyclerViewAdapter(featuredDataset, false);
+        mRecyclerView.setAdapter(mAdapter);
+
+        mRecyclerView = (RecyclerView) fragment.findViewById(R.id.recycler_view_new);
+        mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        mAdapter = new MyRecyclerViewAdapter(newDataset, false);
         mRecyclerView.setAdapter(mAdapter);
         return fragment;
     }
