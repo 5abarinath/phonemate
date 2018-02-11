@@ -1,5 +1,6 @@
 package com.droidbots.phonemate;
 
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.design.widget.NavigationView;
@@ -19,6 +20,7 @@ public class HomeActivity extends AppCompatActivity
         FeedbackFragment.OnFragmentInteractionListener, HomeFragment.OnFragmentInteractionListener{
 
     NavigationView navigationView;
+    SharedPreferences sharedPreferences;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -37,13 +39,22 @@ public class HomeActivity extends AppCompatActivity
         navigationView.setNavigationItemSelectedListener(this);
         navigationView.getMenu().getItem(0).setChecked(true);
 
+        sharedPreferences = getPreferences(MODE_PRIVATE);
+        boolean openingAppForTheFirstTime = sharedPreferences.getBoolean("openingAppForTheFirstTime", true);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        //TODO create sharedPref only after closing questionnaireFragment
+        editor.putBoolean("openingAppForTheFirstTime", false);
+        editor.apply();
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.content_home, HomeFragment.newInstance())
                 .commit();
-        getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content_home, QuestionnaireFragment.newInstance())
-                .addToBackStack(null)
-                .commit();
+
+        if(openingAppForTheFirstTime) {
+            getSupportFragmentManager().beginTransaction()
+                    .replace(R.id.content_home, QuestionnaireFragment.newInstance())
+                    .addToBackStack(null)
+                    .commit();
+        }
     }
 
     @Override

@@ -6,11 +6,19 @@ import android.graphics.drawable.Drawable;
  * Created by sabari on 5/2/18.
  */
 
-public class PhoneDetails {
+public class Smartphone {
     private Drawable thumbnail;
-    private String deviceName;
+    private String deviceName, price;
 
-    public PhoneDetails() {
+    public String getPrice() {
+        return price;
+    }
+
+    public void setPrice(String price) {
+        this.price = price;
+    }
+
+    public Smartphone() {
     }
 
     public Drawable getThumbnail() {

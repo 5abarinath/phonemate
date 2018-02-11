@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content">
+    <android.support.v7.widget.CardView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="10dp">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp">
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:textSize="20sp"
+                android:id="@+id/deviceName"
+                android:text="One Plus 5"
+                android:layout_marginBottom="5dp"/>
+            <View
+                android:layout_width="match_parent"
+                android:layout_height="1dp"
+                android:background="#808080"
+                android:layout_below="@id/deviceName"
+                android:id="@+id/horizontalRule"
+                android:layout_marginBottom="10dp"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                app:srcCompat="@drawable/oneplus5"
+                android:layout_below="@id/horizontalRule"
+                android:id="@+id/deviceThumbnail"/>
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/deviceThumbnail"
+                android:layout_toEndOf="@id/deviceThumbnail"
+                android:layout_below="@id/horizontalRule"
+                android:layout_marginLeft="5dp"
+                android:layout_marginStart="5dp"
+                android:text="Extra details, graphs, avergae rating, websites etc."
+                android:id="@+id/deviceDetails"/>
+        </RelativeLayout>
+    </android.support.v7.widget.CardView>
+</RelativeLayout>

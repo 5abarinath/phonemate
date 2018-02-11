@@ -4,6 +4,8 @@ import android.content.Context;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.support.v7.widget.LinearLayoutManager;
+import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,6 +22,7 @@ import android.view.ViewGroup;
 public class RecommendationFragment extends Fragment {
 
     private OnFragmentInteractionListener mListener;
+    private Smartphone[] recommendedDataset;
 
     public RecommendationFragment() {
         // Required empty public constructor
@@ -39,7 +42,20 @@ public class RecommendationFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_recommendation, container, false);
+        View fragment = inflater.inflate(R.layout.fragment_recommendation, container, false);
+        RecyclerView mRecyclerView = (RecyclerView) fragment.findViewById(R.id.recycler_view_recommend);
+        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+        mRecyclerView.setLayoutManager(mLayoutManager);
+        recommendedDataset = new Smartphone[5];
+        for(int i=0; i<5; i++) {
+            recommendedDataset[i] = new Smartphone();
+            recommendedDataset[i].setThumbnail(getResources().getDrawable(R.drawable.oneplus5));
+            recommendedDataset[i].setDeviceName("One Plus 5");
+            recommendedDataset[i].setPrice(String.valueOf(10000 * i));
+        }
+        MyRecyclerViewAdapter mAdapter = new MyRecyclerViewAdapter(recommendedDataset, true);
+        mRecyclerView.setAdapter(mAdapter);
+        return fragment;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
