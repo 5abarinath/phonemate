@@ -83,7 +83,12 @@ public class HomeActivity extends AppCompatActivity
 
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
-            return true;
+            int loginMethod;
+            SharedPreferences mSharedPreference = getPreferences(MODE_PRIVATE);
+            loginMethod = mSharedPreference.getInt("loginMethod", 0);
+            if(loginMethod == 1) {
+                new LoginActivity().googleSignOut();
+            }
         }
 
         return super.onOptionsItemSelected(item);

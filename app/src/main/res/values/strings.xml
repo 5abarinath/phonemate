@@ -109,4 +109,24 @@
         <item>Option 10&#8211;3</item>
         <item>Option 10&#8211;4</item>
     </string-array>
+
+    <string name="lorem_ipsum2">
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu cursus massa. Quisque nec urna nisl. Morbi id tincidunt orci. Vestibulum aliquam posuere mi finibus imperdiet. Integer tincidunt erat non nisl efficitur faucibus. Pellentesque ut volutpat orci, in malesuada elit. Quisque dapibus, sapien non ultricies luctus, mauris magna viverra lorem, sed vulputate sapien quam sed ex. Cras fermentum mattis commodo. Proin pharetra scelerisque justo, vitae vulputate sapien tristique id. Mauris sollicitudin venenatis vehicula. Vivamus efficitur blandit mauris, id maximus dui pellentesque eu. Nam vel mattis arcu. Aliquam porttitor ex in dolor vestibulum, sodales rutrum tellus iaculis. Cras vestibulum risus quis dui laoreet auctor. Nam vel sem ex. Maecenas ut tempus neque.</string>
+    <string name="title_activity_login">Sign in</string>
+
+    <!-- Strings related to login -->
+    <string name="server_client_id">789483030902-v6631n3iu6slbq11gmji8b72chmc9556.apps.googleusercontent.com</string>
+    <string name="prompt_email">Email</string>
+    <string name="prompt_password">Password</string>
+    <string name="action_sign_in">Sign in</string>
+    <string name="action_sign_in_short">Sign in</string>
+    <string name="login_divider">or login with</string>
+    <string name="action_sign_out">You have been signed out</string>
+    <string name="error_invalid_email">This email address is invalid</string>
+    <string name="error_invalid_password">This password is too short</string>
+    <string name="error_incorrect_password">This password is incorrect</string>
+    <string name="error_field_required">This field is required</string>
+    <string name="permission_rationale">"Contacts permissions are needed for providing email
+        completions."</string>
+    <string name="prompt_register">No account yet? Create one</string>
 </resources>
