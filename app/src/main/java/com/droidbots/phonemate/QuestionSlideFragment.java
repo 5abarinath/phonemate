@@ -62,7 +62,7 @@ public class QuestionSlideFragment extends Fragment {
 	public View onCreateView(LayoutInflater inflater, ViewGroup container,
 							 Bundle savedInstanceState) {
 		ViewGroup rootView = (ViewGroup) inflater.inflate(
-				R.layout.fragment_question_viewpager, container, false);
+				R.layout.fragment_question_4options, container, false);
 
 		tv_questionTitle = (TextView) rootView.findViewById(R.id.questionText);
 		tv_questionTitle.setText(getString(QUESTION_LOOKUP_TABLE[2 * mPageNumber + 1]));

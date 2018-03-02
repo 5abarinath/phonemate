@@ -1,0 +1,440 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
+    tools:context="com.droidbots.phonemate.SmartphoneActivity"
+    tools:showIn="@layout/activity_smartphone"
+    android:paddingTop="10dp"
+    android:paddingLeft="16dp"
+    android:paddingRight="16dp">
+    <ScrollView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+        <RelativeLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical">
+            <Space
+                android:layout_width="100dp"
+                android:layout_height="1dp"
+                android:id="@+id/space"/>
+            <ImageView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                app:srcCompat="@drawable/oneplus5"
+                android:layout_alignParentTop="true"
+                android:id="@+id/deviceImage"
+                android:layout_marginBottom="20dp"/>
+
+            <!--Specifications Begin-->
+            <!--OS-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/device_details_textgap"
+                android:layout_marginEnd="@dimen/device_details_textgap"
+                android:layout_alignRight="@id/space"
+                android:layout_alignEnd="@id/space"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/deviceImage"
+                android:id="@+id/osHead"
+                android:textSize="@dimen/device_details_text_size"
+                android:text="OS" />
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:id="@+id/os"
+                android:layout_marginBottom="@dimen/device_details_rowgap"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@id/osHead"
+                android:layout_toRightOf="@id/space"
+                android:layout_toEndOf="@id/space"
+                android:textSize="@dimen/device_details_text_size"
+                android:text="@string/red_os"/>
+
+            <!--Display-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/device_details_textgap"
+                android:layout_marginEnd="@dimen/device_details_textgap"
+                android:layout_alignRight="@id/space"
+                android:layout_alignEnd="@id/space"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="@dimen/device_details_text_size"
+
+                android:layout_below="@id/os"
+                android:id="@+id/displayHead"
+                android:text="Display"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/space"
+                android:layout_toEndOf="@id/space"
+                android:textSize="@dimen/device_details_text_size"
+                android:layout_marginBottom="@dimen/device_details_rowgap"
+
+                android:id="@+id/display"
+                android:layout_alignTop="@id/displayHead"
+                android:text=""/>
+
+            <!--Chipset-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/device_details_textgap"
+                android:layout_marginEnd="@dimen/device_details_textgap"
+                android:layout_alignRight="@id/space"
+                android:layout_alignEnd="@id/space"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="@dimen/device_details_text_size"
+
+                android:layout_below="@id/display"
+                android:id="@+id/chipsetHead"
+                android:text="Chipset"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/space"
+                android:layout_toEndOf="@id/space"
+                android:textSize="@dimen/device_details_text_size"
+                android:layout_marginBottom="@dimen/device_details_rowgap"
+
+                android:id="@+id/chipset"
+                android:layout_alignTop="@id/chipsetHead"
+                android:text=""/>
+
+            <!--RAM-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/device_details_textgap"
+                android:layout_marginEnd="@dimen/device_details_textgap"
+                android:layout_alignRight="@id/space"
+                android:layout_alignEnd="@id/space"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="@dimen/device_details_text_size"
+
+                android:layout_below="@id/chipset"
+                android:id="@+id/ramHead"
+                android:text="RAM"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/space"
+                android:layout_toEndOf="@id/space"
+                android:textSize="@dimen/device_details_text_size"
+                android:layout_marginBottom="@dimen/device_details_rowgap"
+
+                android:id="@+id/ram"
+                android:layout_alignTop="@id/ramHead"
+                android:text=""/>
+
+            <!--Storage-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/device_details_textgap"
+                android:layout_marginEnd="@dimen/device_details_textgap"
+                android:layout_alignRight="@id/space"
+                android:layout_alignEnd="@id/space"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="@dimen/device_details_text_size"
+
+                android:layout_below="@id/ram"
+                android:id="@+id/storageHead"
+                android:text="Storage"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/space"
+                android:layout_toEndOf="@id/space"
+                android:textSize="@dimen/device_details_text_size"
+                android:layout_marginBottom="@dimen/device_details_rowgap"
+
+                android:id="@+id/storage"
+                android:layout_alignTop="@id/storageHead"
+                android:text=""/>
+
+            <!--Camera-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/device_details_textgap"
+                android:layout_marginEnd="@dimen/device_details_textgap"
+                android:layout_alignRight="@id/space"
+                android:layout_alignEnd="@id/space"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="@dimen/device_details_text_size"
+
+                android:layout_below="@id/storage"
+                android:id="@+id/cameraHead"
+                android:text="Camera"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/space"
+                android:layout_toEndOf="@id/space"
+                android:textSize="@dimen/device_details_text_size"
+                android:layout_marginBottom="@dimen/device_details_rowgap"
+
+                android:id="@+id/camera"
+                android:layout_alignTop="@id/cameraHead"
+                android:text="djdhzcxvnbzxcvznbxc vxnbcv"/>
+
+            <!--Battery-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/device_details_textgap"
+                android:layout_marginEnd="@dimen/device_details_textgap"
+                android:layout_alignRight="@id/space"
+                android:layout_alignEnd="@id/space"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="@dimen/device_details_text_size"
+
+                android:layout_below="@id/camera"
+                android:id="@+id/batteryHead"
+                android:text="Battery"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/space"
+                android:layout_toEndOf="@id/space"
+                android:textSize="@dimen/device_details_text_size"
+                android:layout_marginBottom="@dimen/device_details_rowgap"
+
+                android:id="@+id/battery"
+                android:layout_alignTop="@id/batteryHead"
+                android:text=""/>
+
+            <!--Charging-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/device_details_textgap"
+                android:layout_marginEnd="@dimen/device_details_textgap"
+                android:layout_alignRight="@id/space"
+                android:layout_alignEnd="@id/space"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="@dimen/device_details_text_size"
+
+                android:layout_below="@id/battery"
+                android:id="@+id/chargingHead"
+                android:text="Charging"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/space"
+                android:layout_toEndOf="@id/space"
+                android:textSize="@dimen/device_details_text_size"
+                android:layout_marginBottom="@dimen/device_details_rowgap"
+
+                android:id="@+id/charging"
+                android:layout_alignTop="@id/chargingHead"
+                android:text=""/>
+
+            <!--Connectivity-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/device_details_textgap"
+                android:layout_marginEnd="@dimen/device_details_textgap"
+                android:layout_alignRight="@id/space"
+                android:layout_alignEnd="@id/space"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="@dimen/device_details_text_size"
+
+                android:layout_below="@id/charging"
+                android:id="@+id/connectHead"
+                android:text="Connectivity"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/space"
+                android:layout_toEndOf="@id/space"
+                android:textSize="@dimen/device_details_text_size"
+                android:layout_marginBottom="@dimen/device_details_rowgap"
+
+                android:id="@+id/connect"
+                android:layout_alignTop="@id/connectHead"
+                android:text=""/>
+
+            <!--Security-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/device_details_textgap"
+                android:layout_marginEnd="@dimen/device_details_textgap"
+                android:layout_alignRight="@id/space"
+                android:layout_alignEnd="@id/space"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="@dimen/device_details_text_size"
+
+                android:layout_below="@id/connect"
+                android:id="@+id/securityHead"
+                android:text="Security"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/space"
+                android:layout_toEndOf="@id/space"
+                android:textSize="@dimen/device_details_text_size"
+                android:layout_marginBottom="@dimen/device_details_rowgap"
+
+                android:id="@+id/security"
+                android:layout_alignTop="@id/securityHead"
+                android:text=""/>
+
+            <!--Audio-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/device_details_textgap"
+                android:layout_marginEnd="@dimen/device_details_textgap"
+                android:layout_alignRight="@id/space"
+                android:layout_alignEnd="@id/space"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="@dimen/device_details_text_size"
+
+                android:layout_below="@id/security"
+                android:id="@+id/audioHead"
+                android:text="Audio"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/space"
+                android:layout_toEndOf="@id/space"
+                android:textSize="@dimen/device_details_text_size"
+                android:layout_marginBottom="@dimen/device_details_rowgap"
+
+                android:id="@+id/audio"
+                android:layout_alignTop="@id/audioHead"
+                android:text=""/>
+
+            <!--Network-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/device_details_textgap"
+                android:layout_marginEnd="@dimen/device_details_textgap"
+                android:layout_alignRight="@id/space"
+                android:layout_alignEnd="@id/space"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="@dimen/device_details_text_size"
+
+                android:layout_below="@id/audio"
+                android:id="@+id/networkHead"
+                android:text="Network"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/space"
+                android:layout_toEndOf="@id/space"
+                android:textSize="@dimen/device_details_text_size"
+                android:layout_marginBottom="@dimen/device_details_rowgap"
+
+                android:id="@+id/network"
+                android:layout_alignTop="@id/networkHead"
+                android:text=""/>
+
+            <!--Dimensions-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/device_details_textgap"
+                android:layout_marginEnd="@dimen/device_details_textgap"
+                android:layout_alignRight="@id/space"
+                android:layout_alignEnd="@id/space"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="@dimen/device_details_text_size"
+
+                android:layout_below="@id/network"
+                android:id="@+id/dimenHead"
+                android:text="Dimensions"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/space"
+                android:layout_toEndOf="@id/space"
+                android:textSize="@dimen/device_details_text_size"
+                android:layout_marginBottom="@dimen/device_details_rowgap"
+
+                android:id="@+id/dimensions"
+                android:layout_alignTop="@id/dimenHead"
+                android:text=""/>
+
+            <!--Colors-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginRight="@dimen/device_details_textgap"
+                android:layout_marginEnd="@dimen/device_details_textgap"
+                android:layout_alignRight="@id/space"
+                android:layout_alignEnd="@id/space"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:textSize="@dimen/device_details_text_size"
+
+                android:layout_below="@id/dimensions"
+                android:id="@+id/colorHead"
+                android:text="Colors"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_toRightOf="@id/space"
+                android:layout_toEndOf="@id/space"
+                android:textSize="@dimen/device_details_text_size"
+                android:layout_marginBottom="@dimen/device_details_rowgap"
+
+                android:id="@+id/availColors"
+                android:layout_alignTop="@id/colorHead"
+                android:text=""/>
+        </RelativeLayout>
+    </ScrollView>
+
+</RelativeLayout>

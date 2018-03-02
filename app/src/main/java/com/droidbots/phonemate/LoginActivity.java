@@ -115,7 +115,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
         // Build a GoogleSignInClient with the options specified by gso.
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
-        findViewById(R.id.google_sign_in_button).setOnClickListener(this);
+//        findViewById(R.id.google_sign_in_button).setOnClickListener(this);
     }
 
     @Override
@@ -146,7 +146,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             startActivity(intent);
             finish();
         } else {
-            Toast.makeText(getApplicationContext(), "Could not sign in using Google account. Please try again", Toast.LENGTH_SHORT).show();
+//            Toast.makeText(getApplicationContext(), "Could not sign in using Google account. Please try again", Toast.LENGTH_SHORT).show();
         }
     }
 
@@ -205,6 +205,7 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
             // The Task returned from this call is always completed, no need to attach
             // a listener.
             Task<GoogleSignInAccount> task = GoogleSignIn.getSignedInAccountFromIntent(data);
+            Log.d("GOOGLEFUCKEDUP", "onActivityResult: " + task.getResult());
             handleSignInResult(task);
         }
     }
@@ -387,9 +388,9 @@ public class LoginActivity extends AppCompatActivity implements LoaderCallbacks<
     @Override
     public void onClick(View view) {
         switch(view.getId()) {
-            case R.id.google_sign_in_button:
-                signInWithGoogle();
-                break;
+//            case R.id.google_sign_in_button:
+//                signInWithGoogle();
+//                break;
         }
     }
 
