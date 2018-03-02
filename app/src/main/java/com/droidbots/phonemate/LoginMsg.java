@@ -8,24 +8,24 @@ import com.google.gson.annotations.SerializedName;
  */
 
 public class LoginMsg {
-    @SerializedName("reply")
+    @SerializedName("status")
     @Expose
-    private boolean reply;
+    private String status;
     @SerializedName("msg")
     @Expose
     private String msg;
 
-    public LoginMsg(boolean reply, String msg) {
-        this.reply = reply;
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public LoginMsg(String status, String msg) {
+        this.status = status;
         this.msg = msg;
-    }
-
-    public boolean getReply() {
-        return reply;
-    }
-
-    public void setReply(boolean reply) {
-        this.reply = reply;
     }
 
     public String getMsg() {

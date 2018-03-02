@@ -129,4 +129,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu cursus massa. 
     <string name="permission_rationale">"Contacts permissions are needed for providing email
         completions."</string>
     <string name="prompt_register">No account yet? Create one</string>
+
+    <string name="red_os">Android 8.0\n<font color='red'>Android</font></string>
+    <string name="title_activity_smartphone">Smartphone Activity</string>
 </resources>
