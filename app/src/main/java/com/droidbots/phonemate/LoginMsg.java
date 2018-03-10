@@ -11,9 +11,18 @@ public class LoginMsg {
     @SerializedName("status")
     @Expose
     private String status;
-    @SerializedName("msg")
+    @SerializedName("message")
     @Expose
     private String msg;
+    @SerializedName("token")
+    @Expose
+    private String token;
+
+    public LoginMsg(String status, String msg, String token) {
+        this.status = status;
+        this.msg = msg;
+        this.token = token;
+    }
 
     public String getStatus() {
         return status;
@@ -23,10 +32,9 @@ public class LoginMsg {
         this.status = status;
     }
 
-    public LoginMsg(String status, String msg) {
-        this.status = status;
-        this.msg = msg;
-    }
+    public String getToken() { return token; }
+
+    public void setToken(String token) { this.token = token; }
 
     public String getMsg() {
         return msg;

@@ -126,13 +126,13 @@
                     android:layout_toRightOf="@id/divider_text"
                     android:background="@android:color/darker_gray" />
             </RelativeLayout>
-            <!--<com.google.android.gms.common.SignInButton-->
-                <!--android:id="@+id/google-sign-in-button"-->
-                <!--android:layout_height="wrap_content"-->
-                <!--android:layout_width="match_parent"-->
-                <!--style="?android:textAppearanceSmall"-->
-                <!--android:textAlignment="center"-->
-                <!--android:layout_marginTop="20dp"/>-->
+            <com.google.android.gms.common.SignInButton
+                android:id="@+id/google-sign-in-button"
+                android:layout_height="wrap_content"
+                android:layout_width="match_parent"
+                style="?android:textAppearanceSmall"
+                android:textAlignment="center"
+                android:layout_marginTop="20dp"/>
         </LinearLayout>
     </ScrollView>
 </LinearLayout>
