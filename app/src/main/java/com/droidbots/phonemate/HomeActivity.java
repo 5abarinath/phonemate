@@ -1,8 +1,10 @@
 package com.droidbots.phonemate;
 
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.view.GravityCompat;
@@ -12,6 +14,17 @@ import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.Toast;
+
+import com.google.android.gms.auth.api.signin.GoogleSignIn;
+import com.google.android.gms.auth.api.signin.GoogleSignInClient;
+import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
+import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
+
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
 
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, QuestionnaireFragment.OnFragmentInteractionListener,
@@ -84,11 +97,49 @@ public class HomeActivity extends AppCompatActivity
         //noinspection SimplifiableIfStatement
         if (id == R.id.action_logout) {
             int loginMethod;
-            SharedPreferences mSharedPreference = getPreferences(MODE_PRIVATE);
-            loginMethod = mSharedPreference.getInt("loginMethod", 0);
+            final SharedPreferences mSharedPreference = getSharedPreferences("login_pref", MODE_PRIVATE);
+            loginMethod = mSharedPreference.getInt("loginMethod", -1);
             if(loginMethod == 1) {
-                new LoginActivity().googleSignOut();
+                GoogleSignInOptions gso = new GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
+                        .requestIdToken(getString(R.string.server_client_id))
+                        .requestEmail()
+                        .requestProfile()
+                        .build();
+                // Build a GoogleSignInClient with the options specified by gso.
+                final GoogleSignInClient mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
+                mGoogleSignInClient.signOut()
+                        .addOnCompleteListener(this, new OnCompleteListener<Void>() {
+                            @Override
+                            public void onComplete(@NonNull Task<Void> task) {
+                                mGoogleSignInClient.revokeAccess()
+                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
+                                            @Override
+                                            public void onComplete(@NonNull Task<Void> task) {
+                                                String idToken = mSharedPreference.getString("idToken", null);
+                                                if (idToken == null)
+                                                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
+                                                APIService service = APIClient.getClient().create(APIService.class);
+                                                Call<LogoutMSG> logoutCall = service.performGoogleSignOut(idToken);
+                                                logoutCall.enqueue(new Callback<LogoutMSG>() {
+                                                    @Override
+                                                    public void onResponse(Call<LogoutMSG> call, Response<LogoutMSG> response) {
+                                                    }
+
+                                                    @Override
+                                                    public void onFailure(Call<LogoutMSG> call, Throwable t) {
+                                                        Toast.makeText(getApplicationContext(), "Could not connect to server. Please check your internet connection.", Toast.LENGTH_SHORT).show();
+                                                    }
+                                                });
+                                            }
+                                        });
+                            }
+                        });
             }
+            SharedPreferences.Editor editor = mSharedPreference.edit();
+            editor.clear();
+            editor.apply();
+            Toast.makeText(getApplicationContext(), R.string.action_sign_out, Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(getApplicationContext(), LoginActivity.class));
         }
 
         return super.onOptionsItemSelected(item);
@@ -104,7 +155,6 @@ public class HomeActivity extends AppCompatActivity
         boolean isFragment = true;
         if (id == R.id.nav_home) {
             fragment = HomeFragment.newInstance();
-            //TODO shared preference
         } else if (id == R.id.nav_profile) {
             fragment = ProfileFragment.newInstance();
         } else if (id == R.id.nav_recommendation) {

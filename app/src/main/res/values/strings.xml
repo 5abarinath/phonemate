@@ -115,7 +115,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu cursus massa. 
     <string name="title_activity_login">Sign in</string>
 
     <!-- Strings related to login -->
-    <string name="server_client_id">789483030902-v6631n3iu6slbq11gmji8b72chmc9556.apps.googleusercontent.com</string>
+    <string name="server_client_id">789483030902-sr4ovo9dm6g97ev4124e43dq71dgmdbp.apps.googleusercontent.com</string>
     <string name="prompt_email">Email</string>
     <string name="prompt_password">Password</string>
     <string name="action_sign_in">Sign in</string>

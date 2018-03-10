@@ -3,7 +3,6 @@ package com.droidbots.phonemate;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.support.v7.widget.RecyclerView;
-import android.util.Base64;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -117,8 +116,8 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 	// Return the size of your dataset (invoked by the layout manager)
 	@Override
 	public int getItemCount() {
-		return mDataset.size();
-//		return 5;
+//		return mDataset.size();
+		return 5;
 	}
 
 }

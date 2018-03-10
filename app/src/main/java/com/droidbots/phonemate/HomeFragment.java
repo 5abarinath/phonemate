@@ -1,20 +1,13 @@
 package com.droidbots.phonemate;
 
 import android.content.Context;
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.support.v7.widget.LinearLayoutManager;
-import android.support.v7.widget.RecyclerView;
-import android.util.Base64;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.io.ByteArrayOutputStream;
 import java.util.List;
 
 /**
@@ -45,60 +38,42 @@ public class HomeFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View fragment = inflater.inflate(R.layout.fragment_home, container, false);
-        RecyclerView mRecyclerView = (RecyclerView) fragment.findViewById(R.id.recycler_view_top5);
-        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        mRecyclerView.setLayoutManager(mLayoutManager);
+//        RecyclerView mRecyclerView = (RecyclerView) fragment.findViewById(R.id.recycler_view_top5);
+//        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+//        mRecyclerView.setLayoutManager(mLayoutManager);
 
         //TODO retrofit
-        APIClient client = new APIClient();
-        client.setupClient();
-        featuredDataset = client.getClient();
-//        Log.d("hello", featured.get(0).getDeviceName());
-        top5Dataset = featuredDataset;
-        newDataset = featuredDataset;
-//        Bitmap bm = BitmapFactory.decodeResource(getResources(),R.drawable.oneplus5);
-//        ByteArrayOutputStream baos = new ByteArrayOutputStream();
-//        bm.compress(Bitmap.CompressFormat.JPEG, 100, baos); //bm is the bitmap object
-//        byte[] byteArrayImage = baos.toByteArray();
-//        String encodedImage = Base64.encodeToString(byteArrayImage, Base64.DEFAULT);
-//        top5Dataset = new Smartphone[5];
-//        for(int i=0; i<5; i++) {
-//            top5Dataset[i] = new Smartphone();
-//            top5Dataset[i].setImage(encodedImage);
-//            top5Dataset[i].setDeviceName("One Plus 5");
-//        }
-//        featuredDataset = top5Dataset;
-        newDataset = top5Dataset;
 
-        MyRecyclerViewAdapter mAdapter = new MyRecyclerViewAdapter(top5Dataset, new MyRecyclerViewAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(Phone smartphone) {
-                Log.d("CLICKED", smartphone.getName());
-            }
-        }, false);
-        mRecyclerView.setAdapter(mAdapter);
-
-        mRecyclerView = (RecyclerView) fragment.findViewById(R.id.recycler_view_featured);
-        mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MyRecyclerViewAdapter(featuredDataset, new MyRecyclerViewAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(Phone smartphone) {
-                Log.d("CLICKED", smartphone.getName());
-            }
-        }, false);
-        mRecyclerView.setAdapter(mAdapter);
-
-        mRecyclerView = (RecyclerView) fragment.findViewById(R.id.recycler_view_new);
-        mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
-        mRecyclerView.setLayoutManager(mLayoutManager);
-        mAdapter = new MyRecyclerViewAdapter(newDataset, new MyRecyclerViewAdapter.OnItemClickListener() {
-            @Override
-            public void onItemClick(Phone smartphone) {
-                Log.d("CLICKED", smartphone.getName());
-            }
-        }, false);
-        mRecyclerView.setAdapter(mAdapter);
+//
+//        MyRecyclerViewAdapter mAdapter = new MyRecyclerViewAdapter(top5Dataset, new MyRecyclerViewAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(Phone smartphone) {
+//                Log.d("CLICKED", smartphone.getName());
+//            }
+//        }, false);
+//        mRecyclerView.setAdapter(mAdapter);
+//
+//        mRecyclerView = (RecyclerView) fragment.findViewById(R.id.recycler_view_featured);
+//        mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+//        mRecyclerView.setLayoutManager(mLayoutManager);
+//        mAdapter = new MyRecyclerViewAdapter(featuredDataset, new MyRecyclerViewAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(Phone smartphone) {
+//                Log.d("CLICKED", smartphone.getName());
+//            }
+//        }, false);
+//        mRecyclerView.setAdapter(mAdapter);
+//
+//        mRecyclerView = (RecyclerView) fragment.findViewById(R.id.recycler_view_new);
+//        mLayoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
+//        mRecyclerView.setLayoutManager(mLayoutManager);
+//        mAdapter = new MyRecyclerViewAdapter(newDataset, new MyRecyclerViewAdapter.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(Phone smartphone) {
+//                Log.d("CLICKED", smartphone.getName());
+//            }
+//        }, false);
+//        mRecyclerView.setAdapter(mAdapter);
         return fragment;
     }
 
