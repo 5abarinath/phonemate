@@ -22,10 +22,6 @@ import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
-import retrofit2.Call;
-import retrofit2.Callback;
-import retrofit2.Response;
-
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, QuestionnaireFragment.OnFragmentInteractionListener,
         PrivacyFragment.OnFragmentInteractionListener, ProfileFragment.OnFragmentInteractionListener,
@@ -111,27 +107,6 @@ public class HomeActivity extends AppCompatActivity
                         .addOnCompleteListener(this, new OnCompleteListener<Void>() {
                             @Override
                             public void onComplete(@NonNull Task<Void> task) {
-                                mGoogleSignInClient.revokeAccess()
-                                        .addOnCompleteListener(new OnCompleteListener<Void>() {
-                                            @Override
-                                            public void onComplete(@NonNull Task<Void> task) {
-                                                String idToken = mSharedPreference.getString("idToken", null);
-                                                if (idToken == null)
-                                                    startActivity(new Intent(getApplicationContext(), LoginActivity.class));
-                                                APIService service = APIClient.getClient().create(APIService.class);
-                                                Call<LogoutMSG> logoutCall = service.performGoogleSignOut(idToken);
-                                                logoutCall.enqueue(new Callback<LogoutMSG>() {
-                                                    @Override
-                                                    public void onResponse(Call<LogoutMSG> call, Response<LogoutMSG> response) {
-                                                    }
-
-                                                    @Override
-                                                    public void onFailure(Call<LogoutMSG> call, Throwable t) {
-                                                        Toast.makeText(getApplicationContext(), "Could not connect to server. Please check your internet connection.", Toast.LENGTH_SHORT).show();
-                                                    }
-                                                });
-                                            }
-                                        });
                             }
                         });
             }

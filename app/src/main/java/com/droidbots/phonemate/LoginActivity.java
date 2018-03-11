@@ -159,11 +159,13 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
                         // Signed in successfully, show authenticated UI.
                         updateUI(account);
                     } else {
+                        showProgress(false);
                         Toast.makeText(getApplicationContext(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
                     }
                 }
                 @Override
                 public void onFailure(Call<LoginMsg> call, Throwable t) {
+                    showProgress(false);
                     Toast.makeText(getApplicationContext(), "Could not connect to server. Please check your internet connection.", Toast.LENGTH_SHORT).show();
                 }
             });
