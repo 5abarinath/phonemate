@@ -10,8 +10,10 @@
         android:layout_width="match_parent"
         android:layout_height="355dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginStart="16dp"
         android:layout_marginLeft="16dp"
+        android:layout_marginStart="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginEnd="16dp"
         android:layout_marginTop="10dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -20,24 +22,56 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content">
+
             <TextView
                 android:id="@+id/questionText"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
-                android:layout_marginEnd="16dp"
-                android:layout_marginRight="16dp"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_alignParentTop="true"
                 android:text="@string/question1"
-                android:textSize="18sp"
-                android:layout_alignParentStart="true"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentTop="true"/>
+                android:textSize="18sp" />
+
             <SeekBar
-                android:layout_width="match_parent"
+                android:layout_width="344dp"
                 android:layout_height="wrap_content"
-                android:layout_alignParentStart="true"
                 android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
                 android:layout_below="@id/questionText"
-                android:layout_marginTop="10dp"/>
+                tools:layout_editor_absoluteX="8dp"
+                tools:layout_editor_absoluteY="0dp"
+                android:layout_marginTop="50dp"
+                android:id="@+id/seekBar"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignLeft="@id/seekBar"
+                android:layout_alignStart="@id/seekBar"
+                android:layout_below="@id/seekBar"
+                android:layout_marginTop="5dp"
+                android:textSize="12sp"
+                android:id="@+id/lowerBoundSeek"
+                android:text="5000"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignTop="@id/lowerBoundSeek"
+                android:layout_alignRight="@id/seekBar"
+                android:layout_alignEnd="@id/seekBar"
+                android:textSize="12sp"
+                android:text="50000+"/>
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_centerHorizontal="true"
+                android:layout_below="@id/seekBar"
+                android:layout_marginTop="20dp"
+                android:id="@+id/seekValue"
+                android:text="5000"/>
         </RelativeLayout>
     </ScrollView>
 
@@ -47,15 +81,15 @@
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
         android:layout_marginTop="8dp"
-        android:paddingRight="16dp"
         android:paddingLeft="16dp"
+        android:paddingRight="16dp"
         android:text="@string/category1"
+        android:textSize="22sp"
         app:layout_constraintBottom_toTopOf="@+id/scrollView2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.529"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.522"
-        android:textSize="22sp"/>
+        app:layout_constraintVertical_bias="0.522" />
 
 </android.support.constraint.ConstraintLayout>

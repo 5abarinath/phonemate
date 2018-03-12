@@ -1,17 +1,17 @@
 package com.droidbots.phonemate;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
+import android.content.Context;
+import android.content.Intent;
+import android.net.Uri;
 import android.support.v7.widget.RecyclerView;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import java.io.IOException;
-import java.net.URL;
+import com.squareup.picasso.Picasso;
+
 import java.util.List;
 
 /**
@@ -22,6 +22,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 	private List<Phone> mDataset;
 	private boolean isRecommendation;
 	private OnItemClickListener mListener;
+	private Context mContext;
 
 	public interface OnItemClickListener {
 		void onItemClick(Phone smartphone);
@@ -32,31 +33,46 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 	// you provide access to all the views for a data item in a view holder
 	public static class ViewHolder extends RecyclerView.ViewHolder{
 		// each data item is just a string in this case
-		public TextView deviceName, deviceDetails;
-		public ImageView deviceThumbnail;
+		public TextView deviceName, deviceDetails, deviceCost;
+		public ImageView deviceThumbnail, flipkartImage;
 		public boolean isRecommendation;
-		public ViewHolder(View view, boolean isRecommendation) {
+		private Context innerContext;
+		public ViewHolder(Context context, View view, boolean isRecommendation) {
 			super(view);
+			innerContext = context;
 			deviceName = (TextView) view.findViewById(R.id.deviceName);
 			deviceThumbnail = (ImageView) view.findViewById(R.id.deviceThumbnail);
 			this.isRecommendation = isRecommendation;
 			if(isRecommendation) {
 				deviceDetails = view.findViewById(R.id.deviceDetails);
+				deviceCost = view.findViewById(R.id.deviceCost);
+				flipkartImage = view.findViewById(R.id.flipkartImage);
 			}
 		}
 
 		public void bind(final Phone smartphoneObj, final OnItemClickListener listener) {
-			deviceName.setText(smartphoneObj.getName());
-
-			try {
-				URL url = new URL(smartphoneObj.getImgsrc());
-				Bitmap image = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-				deviceThumbnail.setImageBitmap(image);
-			} catch (IOException e) {
-				Log.d("TAG", "onBindViewHolder: "+e);
-			}
+			String name = smartphoneObj.getName();
+			String splitArr[] = name.split("\\(");
+			deviceName.setText(splitArr[0].trim());
+//			deviceName.setText("Google Pixel 2");
+			Picasso.get()
+					.load(smartphoneObj.getImgsrc())
+					.resize(250,500)
+					.into(deviceThumbnail);
 			if(isRecommendation) {
-				deviceDetails.setText(smartphoneObj.getCost());
+				deviceDetails.setText(smartphoneObj.getOperatingSystem());
+				deviceCost.setText(smartphoneObj.getCost());
+//				deviceName.setText("Google Pixel 2");
+				flipkartImage.setOnClickListener(new View.OnClickListener() {
+					@Override
+					public void onClick(View v) {
+						Intent intent = new Intent();
+						intent.setAction(Intent.ACTION_VIEW);
+						intent.addCategory(Intent.CATEGORY_BROWSABLE);
+						intent.setData(Uri.parse(smartphoneObj.getFlipkartLink()));
+						innerContext.startActivity(intent);
+					}
+				});
 			}
 			itemView.setOnClickListener(new View.OnClickListener() {
 				@Override
@@ -68,10 +84,11 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 	}
 
 	// Provide a suitable constructor (depends on the kind of dataset)
-	public MyRecyclerViewAdapter(List<Phone> myDataset, OnItemClickListener listener, boolean isRecommendation) {
+	public MyRecyclerViewAdapter(Context context, List<Phone> myDataset, OnItemClickListener listener, boolean isRecommendation) {
 		mDataset = myDataset;
 		this.isRecommendation = isRecommendation;
 		mListener = listener;
+		mContext = context;
 	}
 
 	// Create new views (invoked by the layout manager)
@@ -89,7 +106,7 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
                     .inflate(R.layout.custom_cardview_home, parent, false);
         }
         // set the view's size, margins, paddings and layout parameters
-		ViewHolder vh = new ViewHolder(view, isRecommendation);
+		ViewHolder vh = new ViewHolder(mContext, view, isRecommendation);
 		return vh;
 	}
 
@@ -98,26 +115,23 @@ public class MyRecyclerViewAdapter extends RecyclerView.Adapter<MyRecyclerViewAd
 	public void onBindViewHolder(ViewHolder holder, int position) {
 		// - get element from your dataset at this position
 		// - replace the contents of the view with that element
-		holder.deviceName.setText(mDataset.get(position).getName());
-
-		try {
-			URL url = new URL(mDataset.get(position).getImgsrc());
-			Bitmap image = BitmapFactory.decodeStream(url.openConnection().getInputStream());
-			holder.deviceThumbnail.setImageBitmap(image);
-		} catch (IOException e) {
-			Log.d("TAG", "onBindViewHolder: "+e);
-		}
-		if(isRecommendation) {
-			holder.deviceDetails.setText(mDataset.get(position).getCost());
-		}
+//		holder.deviceName.setText(mDataset.get(position).getName());
+//		Picasso.get()
+//				.load(mDataset.get(position).getImgsrc())
+//				.resize(50,50)
+//				.centerCrop()
+//				.into(holder.deviceThumbnail);
+//
+//		if(isRecommendation) {
+//			holder.deviceDetails.setText(mDataset.get(position).getCost());
+//		}
 		holder.bind(mDataset.get(position), mListener);
 	}
 
 	// Return the size of your dataset (invoked by the layout manager)
 	@Override
 	public int getItemCount() {
-//		return mDataset.size();
-		return 5;
+		return mDataset.size();
 	}
 
 }

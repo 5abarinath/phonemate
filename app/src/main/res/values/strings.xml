@@ -12,6 +12,7 @@
     <string name="settings">Settings</string>
     <string name="nav_privacy">Privacy Policy</string>
     <string name="menu_logout">Logout</string>
+    <string name="questionnaire">Questionnaire</string>
 
     <string name="hello_home_fragment">Hello home fragment</string>
     <string name="hello_profile_fragment">Hello profile fragment</string>
@@ -20,7 +21,7 @@
     <string name="hello_settings_fragment">Hello settings fragment</string>
     <string name="hello_privacy_fragment">Hello privacy fragment</string>
 
-    <string name="category0">Category</string>
+    <string name="category0">Smartphone</string>
     <string name="question0">Question 1</string>
     <string-array name="options0">
         <item>Option 1&#8211;1</item>
@@ -29,7 +30,7 @@
         <item>Option 1&#8211;4</item>
     </string-array>
 
-    <string name="category1">Category</string>
+    <string name="category1">OS</string>
     <string name="question1">Question 2</string>
     <string-array name="options1">
         <item>Option 2&#8211;1</item>
@@ -38,7 +39,7 @@
         <item>Option 2&#8211;4</item>
     </string-array>
 
-    <string name="category2">Category</string>
+    <string name="category2">Price</string>
     <string name="question2">Question 3</string>
     <string-array name="options2">
         <item>Option 3&#8211;1</item>
@@ -47,7 +48,7 @@
         <item>Option 3&#8211;4</item>
     </string-array>
 
-    <string name="category3">Category</string>
+    <string name="category3">General Usage</string>
     <string name="question3">Question 4</string>
     <string-array name="options3">
         <item>Option 4&#8211;1</item>
@@ -56,7 +57,7 @@
         <item>Option 4&#8211;4</item>
     </string-array>
 
-    <string name="category4">Category</string>
+    <string name="category4">Battery</string>
     <string name="question4">Question 5</string>
     <string-array name="options4">
         <item>Option 5&#8211;1</item>
@@ -65,7 +66,7 @@
         <item>Option 5&#8211;4</item>
     </string-array>
 
-    <string name="category5">Category</string>
+    <string name="category5">Storage</string>
     <string name="question5">Question 6</string>
     <string-array name="options5">
         <item>Option 6&#8211;1</item>
@@ -74,7 +75,7 @@
         <item>Option 6&#8211;4</item>
     </string-array>
 
-    <string name="category6">Category</string>
+    <string name="category6">Camera</string>
     <string name="question6">Question 7</string>
     <string-array name="options6">
         <item>Option 7&#8211;1</item>
@@ -83,7 +84,7 @@
         <item>Option 7&#8211;4</item>
     </string-array>
 
-    <string name="category7">Category</string>
+    <string name="category7">Screen Size</string>
     <string name="question7">Question 8</string>
     <string-array name="options7">
         <item>Option 8&#8211;1</item>
@@ -92,7 +93,7 @@
         <item>Option 8&#8211;4</item>
     </string-array>
 
-    <string name="category8">Category</string>
+    <string name="category8">RAM</string>
     <string name="question8">Question 9</string>
     <string-array name="options8">
         <item>Option 9&#8211;1</item>
@@ -101,7 +102,7 @@
         <item>Option 9&#8211;4</item>
     </string-array>
 
-    <string name="category9">Category</string>
+    <string name="category9">Weight</string>
     <string name="question9">Question 10</string>
     <string-array name="options9">
         <item>Option 10&#8211;1</item>
@@ -132,4 +133,19 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu cursus massa. 
 
     <string name="red_os">Android 8.0\n<font color='red'>Android</font></string>
     <string name="title_activity_smartphone">Smartphone Activity</string>
+    <string name="specs_os">OS</string>
+    <string name="specs_display">Display</string>
+    <string name="specs_chipset">Chipset</string>
+    <string name="specs_ram">RAM</string>
+    <string name="specs_storage">Storage</string>
+    <string name="specs_camera">Camera</string>
+    <string name="specs_battery">Battery</string>
+    <string name="specs_connectivity">Connectivity</string>
+    <string name="specs_cores">Cores</string>
+    <string name="specs_audio">Audio</string>
+    <string name="specs_network">Network</string>
+    <string name="specs_dimensions">Dimensions</string>
+    <string name="specs_colors">Colors</string>
+    <string name="specs_headingL">Category</string>
+    <string name="specs_headingR">Description</string>
 </resources>

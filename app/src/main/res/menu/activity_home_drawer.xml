@@ -20,6 +20,10 @@
 
     <group android:id="@+id/group2" android:checkableBehavior="single">
         <item
+            android:id="@+id/nav_questionnaire"
+            android:icon="@drawable/questionnaire"
+            android:title="@string/questionnaire" />
+        <item
             android:id="@+id/nav_feedback"
             android:icon="@drawable/ic_menu_feedback"
             android:title="@string/feedback" />

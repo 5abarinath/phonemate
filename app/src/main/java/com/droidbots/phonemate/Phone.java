@@ -23,6 +23,9 @@ public class Phone implements Serializable {
 @SerializedName("3G")
 @Expose
 private String _3G;
+    @SerializedName("flipkart_link")
+    @Expose
+    private String flipkartLink;
     @SerializedName("3G Speed")
     @Expose
     private Object _3GSpeed;
@@ -34,7 +37,7 @@ private String _3G;
     private Object audioFormats;
     @SerializedName("Audio Jack")
     @Expose
-    private Object audioJack;
+    private String audioJack;
     @SerializedName("Battery Capacity")
     @Expose
     private String batteryCapacity;
@@ -100,7 +103,7 @@ private String _3G;
     private String displaySize;
     @SerializedName("Display Type")
     @Expose
-    private Object displayType;
+    private String displayType;
     @SerializedName("Domestic Warranty")
     @Expose
     private Object domesticWarranty;
@@ -307,7 +310,7 @@ private String _3G;
     private String processorCore;
     @SerializedName("Processor Type")
     @Expose
-    private Object processorType;
+    private String processorType;
     @SerializedName("Quick Charging")
     @Expose
     private Object quickCharging;
@@ -632,7 +635,7 @@ private String _3G;
      * @param touchscreen
      * @param userMemory
      */
-    public Phone(String _3G, Object _3GSpeed, Object additionalContent, Object audioFormats, Object audioJack, String batteryCapacity, Object batteryType, String bluetoothSupport, Object bluetoothVersion, String browseType, Object browser, Object businessPhone, Object callDivert, String callLogMemory, Object callRecords, Object callTimer, Object callWaitHold, String color, Object conferenceCall, String cost, Object coveredInWarranty, Object dLNASupport, Object depth, Object digitalZoom, Object displayColors, String displaySize, Object displayType, Object domesticWarranty, Object dualBattery, String dualCameraLens, Object eDGE, Object eDGEFeatures, String expandableStorage, Object fMRadio, Object fMRadioRecording, Object flash, Object frameRate, Object fullHDRecording, Object gPRS, Object gPRSFeatures, String gPSSupport, Object gPU, Object games, Object graphicsPPI, Object hDGameSupport, Object hDRecording, Object handsFree, Object height, Object hotSWAPSupport, String hybridSimSlot, Object imageEditor, String imgsrc, String importantApps, String inTheBox, Object infrared, Object instantMessage, String internalStorage, Object internationalWarranty, String internetConnectivity, Object jAVASupport, Object javaApplication, Object keypad, Object keypadType, Object logs, Object mMS, String mapSupport, Object memoryCardSlotType, Object microUSBPort, Object microUSBVersion, Object miniHDMIPort, Object miniUSBPort, Object miniUSBVersion, Object mobileTracker, String modelName, Object modelNumber, Object musicPlayer, Object nFC, String name, String networkType, Object notCoveredInWarranty, String oTGCompatible, Object operatingFrequency, String operatingSystem, Object opticalZoom, Object otherDisplayFeatures, String otherFeatures, Object phoneBook, Object phoneBookMemory, Object preInstalledBrowser, Object predictiveTextInput, String primaryCamera, String primaryCameraAvailable, String primaryCameraFeatures, String primaryClockSpeed, String processorCore, Object processorType, Object quickCharging, String rAM, Object removableBattery, String resolution, Object resolutionType, Object ringtonesFormat, Object sIMAccess, String sIMSize, String sIMType, String sMS, String sMSMemory, String secondaryCamera, String secondaryCameraAvailable, Object secondaryCameraFeatures, Object secondaryClockSpeed, String sensors, Object series, String smartphone, Object socialNetworkingPhone, Object soundEnhancements, Object speakerPhone, Object speedDialing, Object supportedLanguages, String supportedMemoryCardType, String supportedNetworks, Object tVOut, String talkTime, Object totalMemory, String touchscreen, String touchscreenType, Object uSBConnectivity, Object uSBTethering, int unnamed0, Object unnamed147, Object unnamed148, Object unnamed149, Object upgradableOperatingSystem, Object userInterface, Object userMemory, Object videoCallSupport, Object videoFormats, String videoRecording, Object videoRecordingResolution, String voiceInput, Object wAP, Object wAPVersion, Object warrantyServiceType, String warrantySummary, Object weight, String wiFi, Object wiFiHotspot, Object wiFiVersion, Object width, String reviewlink) {
+    public Phone(String _3G, Object _3GSpeed, Object additionalContent, Object audioFormats, String audioJack, String batteryCapacity, Object batteryType, String bluetoothSupport, Object bluetoothVersion, String browseType, Object browser, Object businessPhone, Object callDivert, String callLogMemory, Object callRecords, Object callTimer, Object callWaitHold, String color, Object conferenceCall, String cost, Object coveredInWarranty, Object dLNASupport, Object depth, Object digitalZoom, Object displayColors, String displaySize, String displayType, Object domesticWarranty, Object dualBattery, String dualCameraLens, Object eDGE, Object eDGEFeatures, String expandableStorage, Object fMRadio, Object fMRadioRecording, Object flash, Object frameRate, Object fullHDRecording, Object gPRS, Object gPRSFeatures, String gPSSupport, Object gPU, Object games, Object graphicsPPI, Object hDGameSupport, Object hDRecording, Object handsFree, Object height, Object hotSWAPSupport, String hybridSimSlot, Object imageEditor, String imgsrc, String importantApps, String inTheBox, Object infrared, Object instantMessage, String internalStorage, Object internationalWarranty, String internetConnectivity, Object jAVASupport, Object javaApplication, Object keypad, Object keypadType, Object logs, Object mMS, String mapSupport, Object memoryCardSlotType, Object microUSBPort, Object microUSBVersion, Object miniHDMIPort, Object miniUSBPort, Object miniUSBVersion, Object mobileTracker, String modelName, Object modelNumber, Object musicPlayer, Object nFC, String name, String networkType, Object notCoveredInWarranty, String oTGCompatible, Object operatingFrequency, String operatingSystem, Object opticalZoom, Object otherDisplayFeatures, String otherFeatures, Object phoneBook, Object phoneBookMemory, Object preInstalledBrowser, Object predictiveTextInput, String primaryCamera, String primaryCameraAvailable, String primaryCameraFeatures, String primaryClockSpeed, String processorCore, String processorType, Object quickCharging, String rAM, Object removableBattery, String resolution, Object resolutionType, Object ringtonesFormat, Object sIMAccess, String sIMSize, String sIMType, String sMS, String sMSMemory, String secondaryCamera, String secondaryCameraAvailable, Object secondaryCameraFeatures, Object secondaryClockSpeed, String sensors, Object series, String smartphone, Object socialNetworkingPhone, Object soundEnhancements, Object speakerPhone, Object speedDialing, Object supportedLanguages, String supportedMemoryCardType, String supportedNetworks, Object tVOut, String talkTime, Object totalMemory, String touchscreen, String touchscreenType, Object uSBConnectivity, Object uSBTethering, int unnamed0, Object unnamed147, Object unnamed148, Object unnamed149, Object upgradableOperatingSystem, Object userInterface, Object userMemory, Object videoCallSupport, Object videoFormats, String videoRecording, Object videoRecordingResolution, String voiceInput, Object wAP, Object wAPVersion, Object warrantyServiceType, String warrantySummary, Object weight, String wiFi, Object wiFiHotspot, Object wiFiVersion, Object width, String reviewlink) {
         super();
         this._3G = _3G;
         this._3GSpeed = _3GSpeed;
@@ -786,6 +789,14 @@ private String _3G;
         this.reviewlink = reviewlink;
     }
 
+    public String getFlipkartLink() {
+        return flipkartLink;
+    }
+
+    public void setFlipkartLink(String flipkartLink) {
+        this.flipkartLink = flipkartLink;
+    }
+
     public String get3G() {
         return _3G;
     }
@@ -838,15 +849,15 @@ private String _3G;
         return this;
     }
 
-    public Object getAudioJack() {
+    public String getAudioJack() {
         return audioJack;
     }
 
-    public void setAudioJack(Object audioJack) {
+    public void setAudioJack(String audioJack) {
         this.audioJack = audioJack;
     }
 
-    public Phone withAudioJack(Object audioJack) {
+    public Phone withAudioJack(String audioJack) {
         this.audioJack = audioJack;
         return this;
     }
@@ -1124,15 +1135,15 @@ private String _3G;
         return this;
     }
 
-    public Object getDisplayType() {
+    public String getDisplayType() {
         return displayType;
     }
 
-    public void setDisplayType(Object displayType) {
+    public void setDisplayType(String displayType) {
         this.displayType = displayType;
     }
 
-    public Phone withDisplayType(Object displayType) {
+    public Phone withDisplayType(String displayType) {
         this.displayType = displayType;
         return this;
     }
@@ -2021,15 +2032,15 @@ private String _3G;
         return this;
     }
 
-    public Object getProcessorType() {
+    public String getProcessorType() {
         return processorType;
     }
 
-    public void setProcessorType(Object processorType) {
+    public void setProcessorType(String processorType) {
         this.processorType = processorType;
     }
 
-    public Phone withProcessorType(Object processorType) {
+    public Phone withProcessorType(String processorType) {
         this.processorType = processorType;
         return this;
     }

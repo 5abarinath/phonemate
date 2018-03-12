@@ -34,11 +34,11 @@ public class Smartphone implements Serializable {
 //    }
 
 
-    public String getPrice() {
+    public String getCost() {
         return price;
     }
 
-    public void setPrice(String price) {
+    public void setCost(String price) {
         this.price = price;
     }
 
@@ -46,19 +46,19 @@ public class Smartphone implements Serializable {
 //        specs = new HashMap<>();
     }
 
-    public String getImage() {
+    public String getImgsrc() {
         return encodedImage;
     }
 
-    public void setImage(String base64Image) {
+    public void setImgsrc(String base64Image) {
         this.encodedImage = base64Image;
     }
 
-    public String getDeviceName() {
+    public String getName() {
         return deviceName;
     }
 
-    public void setDeviceName(String deviceName) {
+    public void setName(String deviceName) {
         this.deviceName = deviceName;
     }
 
