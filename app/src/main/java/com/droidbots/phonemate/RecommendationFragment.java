@@ -14,6 +14,10 @@ import android.view.ViewGroup;
 
 import java.util.List;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 
 /**
  * A simple {@link Fragment} subclass.
@@ -47,20 +51,52 @@ public class RecommendationFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View fragment = inflater.inflate(R.layout.fragment_recommendation, container, false);
-        RecyclerView mRecyclerView = (RecyclerView) fragment.findViewById(R.id.recycler_view_recommend);
+
+        final RecyclerView mRecyclerView = (RecyclerView) fragment.findViewById(R.id.recycler_view_recommend);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
-        MyRecyclerViewAdapter mAdapter = new MyRecyclerViewAdapter(recommendedDataset, new MyRecyclerViewAdapter.OnItemClickListener() {
-           @Override
-           public void onItemClick(Phone smartphone) {
-               Log.d("CLICKED", smartphone.getName());
-               Intent intent = new Intent(getActivity(), SmartphoneActivity.class);
-               intent.putExtra("smartphone", smartphone);
-               startActivity(intent);
-           }
-        }, true);
-        mRecyclerView.setAdapter(mAdapter);
+        APIService service = APIClient.getClient().create(APIService.class);
+        Call<List<Phone>> call = service.getTopDevices();
+        Log.d("Sabari", "onCreateView: Before retrofit call");
+        call.enqueue(new Callback<List<Phone>>() {
+            @Override
+            public void onResponse(Call<List<Phone>> call, Response<List<Phone>> response) {
+                recommendedDataset = response.body();
+                Log.d("Sabari", "YOLO");
+                Log.d("Sabari", recommendedDataset.get(0).getName());
+                MyRecyclerViewAdapter mAdapter = new MyRecyclerViewAdapter(getActivity(), recommendedDataset,
+                        new MyRecyclerViewAdapter.OnItemClickListener() {
+                            @Override
+                            public void onItemClick(Phone smartphone) {
+                                Log.d("CLICKED", smartphone.getName());
+                                Intent intent = new Intent(getActivity(), SmartphoneActivity.class);
+                                intent.putExtra("smartphone", smartphone);
+                                startActivity(intent);
+                            }
+                        }, true);
+                mRecyclerView.setAdapter(mAdapter);
+            }
+
+            @Override
+            public void onFailure(Call<List<Phone>> call, Throwable t) {
+                Log.d("Sabari", "You are a failure");
+            }
+        });
+//        RecyclerView mRecyclerView = (RecyclerView) fragment.findViewById(R.id.recycler_view_recommend);
+//        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
+//        mRecyclerView.setLayoutManager(mLayoutManager);
+//
+//        MyRecyclerViewAdapter mAdapter = new MyRecyclerViewAdapter(recommendedDataset, new MyRecyclerViewAdapter.OnItemClickListener() {
+//           @Override
+//           public void onItemClick(Phone smartphone) {
+//               Log.d("CLICKED", smartphone.getName());
+//               Intent intent = new Intent(getActivity(), SmartphoneActivity.class);
+//               intent.putExtra("smartphone", smartphone);
+//               startActivity(intent);
+//           }
+//        }, true);
+//        mRecyclerView.setAdapter(mAdapter);
         return fragment;
     }
 

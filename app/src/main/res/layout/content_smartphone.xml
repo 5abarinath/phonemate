@@ -25,12 +25,51 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerHorizontal="true"
-                app:srcCompat="@drawable/oneplus5"
                 android:layout_alignParentTop="true"
                 android:id="@+id/deviceImage"
                 android:layout_marginBottom="20dp"/>
 
+            <ImageView
+                android:id="@+id/flipkartImage"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignBottom="@id/deviceImage"
+                android:layout_alignParentEnd="true"
+                android:layout_alignParentRight="true"
+                app:srcCompat="@drawable/flipkart_icon"
+                android:clickable="true"
+                android:focusable="true"/>
+
             <!--Specifications Begin-->
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_alignRight="@id/space"
+                android:layout_alignEnd="@id/space"
+                android:layout_alignParentLeft="true"
+                android:layout_alignParentStart="true"
+                android:layout_below="@id/deviceImage"
+                android:textSize="16sp"
+                android:layout_marginRight="@dimen/device_details_textgap"
+                android:layout_marginEnd="@dimen/device_details_textgap"
+                android:id="@+id/heading1"
+                android:text="@string/specs_headingL"
+                android:textColor="#000000"/>
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_toRightOf="@id/space"
+                android:layout_toEndOf="@id/space"
+                android:layout_alignParentRight="true"
+                android:layout_alignParentEnd="true"
+                android:layout_alignTop="@id/heading1"
+                android:layout_marginBottom="@dimen/device_details_rowgap"
+                android:textSize="16sp"
+                android:id="@+id/heading2"
+                android:text="@string/specs_headingR"
+                android:textColor="#000000"/>
+
+
             <!--OS-->
             <TextView
                 android:layout_width="wrap_content"
@@ -41,10 +80,11 @@
                 android:layout_alignEnd="@id/space"
                 android:layout_alignParentLeft="true"
                 android:layout_alignParentStart="true"
-                android:layout_below="@id/deviceImage"
+                android:layout_below="@id/heading1"
                 android:id="@+id/osHead"
                 android:textSize="@dimen/device_details_text_size"
-                android:text="OS" />
+                android:text="@string/specs_os"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -72,7 +112,8 @@
 
                 android:layout_below="@id/os"
                 android:id="@+id/displayHead"
-                android:text="Display"/>
+                android:text="@string/specs_display"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -101,7 +142,8 @@
 
                 android:layout_below="@id/display"
                 android:id="@+id/chipsetHead"
-                android:text="Chipset"/>
+                android:text="@string/specs_chipset"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -130,7 +172,8 @@
 
                 android:layout_below="@id/chipset"
                 android:id="@+id/ramHead"
-                android:text="RAM"/>
+                android:text="@string/specs_ram"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -159,7 +202,8 @@
 
                 android:layout_below="@id/ram"
                 android:id="@+id/storageHead"
-                android:text="Storage"/>
+                android:text="@string/specs_storage"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -188,7 +232,8 @@
 
                 android:layout_below="@id/storage"
                 android:id="@+id/cameraHead"
-                android:text="Camera"/>
+                android:text="@string/specs_camera"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -217,7 +262,8 @@
 
                 android:layout_below="@id/camera"
                 android:id="@+id/batteryHead"
-                android:text="Battery"/>
+                android:text="@string/specs_battery"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -232,35 +278,6 @@
                 android:layout_alignTop="@id/batteryHead"
                 android:text=""/>
 
-            <!--Charging-->
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_marginRight="@dimen/device_details_textgap"
-                android:layout_marginEnd="@dimen/device_details_textgap"
-                android:layout_alignRight="@id/space"
-                android:layout_alignEnd="@id/space"
-                android:layout_alignParentLeft="true"
-                android:layout_alignParentStart="true"
-                android:textSize="@dimen/device_details_text_size"
-
-                android:layout_below="@id/battery"
-                android:id="@+id/chargingHead"
-                android:text="Charging"/>
-            <TextView
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_alignParentRight="true"
-                android:layout_alignParentEnd="true"
-                android:layout_toRightOf="@id/space"
-                android:layout_toEndOf="@id/space"
-                android:textSize="@dimen/device_details_text_size"
-                android:layout_marginBottom="@dimen/device_details_rowgap"
-
-                android:id="@+id/charging"
-                android:layout_alignTop="@id/chargingHead"
-                android:text=""/>
-
             <!--Connectivity-->
             <TextView
                 android:layout_width="wrap_content"
@@ -273,9 +290,10 @@
                 android:layout_alignParentStart="true"
                 android:textSize="@dimen/device_details_text_size"
 
-                android:layout_below="@id/charging"
+                android:layout_below="@id/battery"
                 android:id="@+id/connectHead"
-                android:text="Connectivity"/>
+                android:text="@string/specs_connectivity"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -290,7 +308,7 @@
                 android:layout_alignTop="@id/connectHead"
                 android:text=""/>
 
-            <!--Security-->
+            <!--Cores-->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -303,8 +321,9 @@
                 android:textSize="@dimen/device_details_text_size"
 
                 android:layout_below="@id/connect"
-                android:id="@+id/securityHead"
-                android:text="Security"/>
+                android:id="@+id/coresHead"
+                android:text="@string/specs_cores"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -315,8 +334,8 @@
                 android:textSize="@dimen/device_details_text_size"
                 android:layout_marginBottom="@dimen/device_details_rowgap"
 
-                android:id="@+id/security"
-                android:layout_alignTop="@id/securityHead"
+                android:id="@+id/cores"
+                android:layout_alignTop="@id/coresHead"
                 android:text=""/>
 
             <!--Audio-->
@@ -331,9 +350,10 @@
                 android:layout_alignParentStart="true"
                 android:textSize="@dimen/device_details_text_size"
 
-                android:layout_below="@id/security"
+                android:layout_below="@id/cores"
                 android:id="@+id/audioHead"
-                android:text="Audio"/>
+                android:text="@string/specs_audio"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -362,7 +382,8 @@
 
                 android:layout_below="@id/audio"
                 android:id="@+id/networkHead"
-                android:text="Network"/>
+                android:text="@string/specs_network"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -391,7 +412,8 @@
 
                 android:layout_below="@id/network"
                 android:id="@+id/dimenHead"
-                android:text="Dimensions"/>
+                android:text="@string/specs_dimensions"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -420,7 +442,8 @@
 
                 android:layout_below="@id/dimensions"
                 android:id="@+id/colorHead"
-                android:text="Colors"/>
+                android:text="@string/specs_colors"
+                android:textColor="#000000"/>
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"

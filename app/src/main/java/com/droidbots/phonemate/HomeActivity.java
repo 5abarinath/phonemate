@@ -140,6 +140,8 @@ public class HomeActivity extends AppCompatActivity
             fragment = SettingsFragment.newInstance();
         } else if (id == R.id.nav_privacy) {
             fragment = PrivacyFragment.newInstance();
+        } else if (id == R.id.nav_questionnaire) {
+            fragment = QuestionnaireFragment.newInstance();
         }
 
         if(isFragment) {

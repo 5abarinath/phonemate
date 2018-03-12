@@ -1,12 +1,16 @@
 package com.droidbots.phonemate;
 
 import android.content.Context;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import java.util.Map;
 
 
 public class SettingsFragment extends Fragment {
@@ -30,8 +34,15 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_settings, container, false);
+        SharedPreferences mSharedPref = getActivity().getSharedPreferences("userAnswers",
+                Context.MODE_PRIVATE);
+        Map<String, ?> userResponses = mSharedPref.getAll();
+        for (Map.Entry<String, ?> entry : userResponses.entrySet()) {
+            Log.d("Sabari", "Key: " + entry.getKey() + " Value: " + entry.getValue());
+        }
+
+        return rootView;
     }
 
     // TODO: Rename method, update argument and hook method into UI event
