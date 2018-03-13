@@ -51,6 +51,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
+    private TextView newUser;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,6 +59,14 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = findViewById(R.id.email);
+        newUser = findViewById(R.id.prompt_sign_up);
+
+        newUser.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                startActivity(new Intent(getApplicationContext(), SignUpActivity.class));
+            }
+        });
 
         mPasswordView = findViewById(R.id.password);
         mPasswordView.setOnEditorActionListener(new TextView.OnEditorActionListener() {

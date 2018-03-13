@@ -26,6 +26,12 @@ private String _3G;
     @SerializedName("flipkart_link")
     @Expose
     private String flipkartLink;
+    @SerializedName("status")
+    @Expose
+    private String status;
+    @SerializedName("message")
+    @Expose
+    private String message;
     @SerializedName("3G Speed")
     @Expose
     private Object _3GSpeed;
@@ -787,6 +793,22 @@ private String _3G;
         this.wiFiVersion = wiFiVersion;
         this.width = width;
         this.reviewlink = reviewlink;
+    }
+
+    public String getStatus() {
+        return status;
+    }
+
+    public void setStatus(String status) {
+        this.status = status;
+    }
+
+    public String getMessage() {
+        return message;
+    }
+
+    public void setMessage(String message) {
+        this.message = message;
     }
 
     public String getFlipkartLink() {
