@@ -22,25 +22,25 @@
     <string name="hello_privacy_fragment">Hello privacy fragment</string>
 
     <string name="category0">Smartphone</string>
-    <string name="question0">Question 1</string>
+    <string name="question0">Do you want a smartphone?</string>
     <string-array name="options0">
-        <item>Option 1&#8211;1</item>
-        <item>Option 1&#8211;2</item>
+        <item>No</item>
+        <item>Yes</item>
         <item>Option 1&#8211;3</item>
         <item>Option 1&#8211;4</item>
     </string-array>
 
     <string name="category1">OS</string>
-    <string name="question1">Question 2</string>
+    <string name="question1">Select Operating System</string>
     <string-array name="options1">
-        <item>Option 2&#8211;1</item>
-        <item>Option 2&#8211;2</item>
-        <item>Option 2&#8211;3</item>
+        <item>Android</item>
+        <item>iOS</item>
+        <item>Other</item>
         <item>Option 2&#8211;4</item>
     </string-array>
 
     <string name="category2">Price</string>
-    <string name="question2">Question 3</string>
+    <string name="question2">Use slider to select <b>maximum budget</b></string>
     <string-array name="options2">
         <item>Option 3&#8211;1</item>
         <item>Option 3&#8211;2</item>
@@ -49,64 +49,64 @@
     </string-array>
 
     <string name="category3">General Usage</string>
-    <string name="question3">Question 4</string>
+    <string name="question3">What is your basic requirement?</string>
     <string-array name="options3">
-        <item>Option 4&#8211;1</item>
-        <item>Option 4&#8211;2</item>
-        <item>Option 4&#8211;3</item>
-        <item>Option 4&#8211;4</item>
+        <item>Photography</item>
+        <item>All-rounder</item>
+        <item>Entertainment</item>
+        <item>Value for money</item>
     </string-array>
 
     <string name="category4">Battery</string>
-    <string name="question4">Question 5</string>
+    <string name="question4">Expected average usage</string>
     <string-array name="options4">
-        <item>Option 5&#8211;1</item>
-        <item>Option 5&#8211;2</item>
-        <item>Option 5&#8211;3</item>
+        <item>Low</item>
+        <item>Medium</item>
+        <item>Heavy</item>
         <item>Option 5&#8211;4</item>
     </string-array>
 
     <string name="category5">Storage</string>
-    <string name="question5">Question 6</string>
+    <string name="question5">Required Internal Memory</string>
     <string-array name="options5">
-        <item>Option 6&#8211;1</item>
-        <item>Option 6&#8211;2</item>
-        <item>Option 6&#8211;3</item>
+        <item>Low (Up to 8GB)</item>
+        <item>Medium (Up to 32GB)</item>
+        <item>Large (32GB+)</item>
         <item>Option 6&#8211;4</item>
     </string-array>
 
     <string name="category6">Camera</string>
-    <string name="question6">Question 7</string>
+    <string name="question6">Choose required camera specification</string>
     <string-array name="options6">
-        <item>Option 7&#8211;1</item>
-        <item>Option 7&#8211;2</item>
-        <item>Option 7&#8211;3</item>
+        <item>Low Quality (Up to 4MP)</item>
+        <item>Medium (Up to 10MP)</item>
+        <item>Good Quality (10MP+)</item>
         <item>Option 7&#8211;4</item>
     </string-array>
 
     <string name="category7">Screen Size</string>
-    <string name="question7">Question 8</string>
+    <string name="question7">Choose required screen size</string>
     <string-array name="options7">
-        <item>Option 8&#8211;1</item>
-        <item>Option 8&#8211;2</item>
-        <item>Option 8&#8211;3</item>
+        <item>Small</item>
+        <item>Medium</item>
+        <item>Large</item>
         <item>Option 8&#8211;4</item>
     </string-array>
 
     <string name="category8">RAM</string>
-    <string name="question8">Question 9</string>
+    <string name="question8">How much RAM would you like you device to have?</string>
     <string-array name="options8">
-        <item>Option 9&#8211;1</item>
-        <item>Option 9&#8211;2</item>
-        <item>Option 9&#8211;3</item>
+        <item>Up to 1.5GB</item>
+        <item>Up to 3GB</item>
+        <item>3GB+</item>
         <item>Option 9&#8211;4</item>
     </string-array>
 
     <string name="category9">Weight</string>
-    <string name="question9">Question 10</string>
+    <string name="question9">Would you want a light weight device?</string>
     <string-array name="options9">
-        <item>Option 10&#8211;1</item>
-        <item>Option 10&#8211;2</item>
+        <item>Yes</item>
+        <item>Doesn\'t Matter</item>
         <item>Option 10&#8211;3</item>
         <item>Option 10&#8211;4</item>
     </string-array>
@@ -148,4 +148,6 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu cursus massa. 
     <string name="specs_colors">Colors</string>
     <string name="specs_headingL">Category</string>
     <string name="specs_headingR">Description</string>
+
+    <string name="signup_header"><b><u>Sign Up</u></b></string>
 </resources>

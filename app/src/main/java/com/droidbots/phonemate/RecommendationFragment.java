@@ -1,8 +1,12 @@
 package com.droidbots.phonemate;
 
+import android.app.AlertDialog;
 import android.content.Context;
+import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
+import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -12,7 +16,9 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -56,15 +62,53 @@ public class RecommendationFragment extends Fragment {
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
 
+        Log.e("WTF1", "LOREM IPSUM DOLOR AMET");
+        SharedPreferences mSharedPref = getActivity().getSharedPreferences("userAnswers",
+                Context.MODE_PRIVATE);
+        Map<String, ?> userResponses1 = mSharedPref.getAll();
+        for (Map.Entry<String, ?> entry : userResponses1.entrySet()) {
+            Log.d("Sabari", "Key: " + entry.getKey() + " Value: " + entry.getValue());
+        }
+        String[] userResponses = new String[10];
+        userResponses[0] = mSharedPref.getString("smartphone", "-1");
+        userResponses[1] = mSharedPref.getString("os", "-1");
+        userResponses[2] = mSharedPref.getString("price", "-1");
+        userResponses[3] = mSharedPref.getString("busage", "-1");
+        userResponses[4] = mSharedPref.getString("battery", "-1");
+        userResponses[5] = mSharedPref.getString("storage", "-1");
+        userResponses[6] = mSharedPref.getString("camera", "-1");
+        userResponses[7] = mSharedPref.getString("screen", "-1");
+        userResponses[8] = mSharedPref.getString("ram", "-1");
+        userResponses[9] = mSharedPref.getString("weight", "-1");
+
+        Log.e("WTF2", "LOREM IPSUM DOLOR AMET");
         APIService service = APIClient.getClient().create(APIService.class);
-        Call<List<Phone>> call = service.getTopDevices();
-        Log.d("Sabari", "onCreateView: Before retrofit call");
+        Responses responses = new Responses(userResponses[0], userResponses[1],
+                userResponses[2], userResponses[3], userResponses[4], userResponses[5],
+                userResponses[6], userResponses[7], userResponses[8], userResponses[9]);
+        Call<List<Phone>> call = service.getRecommendedDevices(responses);
+        Log.e("WTF3", "LOREM IPSUM DOLOR AMET");
         call.enqueue(new Callback<List<Phone>>() {
             @Override
             public void onResponse(Call<List<Phone>> call, Response<List<Phone>> response) {
                 recommendedDataset = response.body();
-                Log.d("Sabari", "YOLO");
-                Log.d("Sabari", recommendedDataset.get(0).getName());
+                if(recommendedDataset == null) {
+                    Log.d("NULL DATASET", "onResponse: kappa123");
+                    AlertDialog.Builder builder;
+                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+                        builder = new AlertDialog.Builder(getActivity(), android.R.style.Theme_Material_Dialog_Alert);
+                    } else {
+                        builder = new AlertDialog.Builder(getActivity());
+                    }
+                    builder.setTitle("Oops")
+                            .setMessage(recommendedDataset.get(0).getMessage())
+                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+                                public void onClick(DialogInterface dialog, int which) {
+                                    // do nothing
+                                }
+                            })
+                            .show();
+                }
                 MyRecyclerViewAdapter mAdapter = new MyRecyclerViewAdapter(getActivity(), recommendedDataset,
                         new MyRecyclerViewAdapter.OnItemClickListener() {
                             @Override
@@ -83,6 +127,8 @@ public class RecommendationFragment extends Fragment {
                 Log.d("Sabari", "You are a failure");
             }
         });
+        Log.e("WTF3", "LOREM IPSUM DOLOR AMET");
+
 //        RecyclerView mRecyclerView = (RecyclerView) fragment.findViewById(R.id.recycler_view_recommend);
 //        RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
 //        mRecyclerView.setLayoutManager(mLayoutManager);

@@ -4,9 +4,33 @@
     android:layout_height="match_parent"
     tools:context="com.droidbots.phonemate.ProfileFragment">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="200dp"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentTop="true"
+        android:src="@drawable/user_default"
+        android:id="@+id/profilePic"/>
+
     <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_profile_fragment" />
+        android:layout_height="wrap_content"
+        android:layout_below="@id/profilePic"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:id="@+id/username"
+        android:text="Lorem Ipsum Name"/>
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/username"
+        android:id="@+id/email"
+        android:layout_marginTop="20dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="loremipsum@gmail.com"/>
 
 </RelativeLayout>

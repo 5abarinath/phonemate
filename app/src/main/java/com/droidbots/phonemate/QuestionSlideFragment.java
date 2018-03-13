@@ -58,13 +58,26 @@ public class QuestionSlideFragment extends Fragment {
 			R.layout.fragment_question_2options,
 			R.layout.fragment_question_3options,
 			R.layout.fragment_question_slider,
-			R.layout.fragment_question_4options,
 			R.layout.fragment_question_3options,
-			R.layout.fragment_question_4options,
-			R.layout.fragment_question_4options,
 			R.layout.fragment_question_3options,
-			R.layout.fragment_question_4options,
+			R.layout.fragment_question_3options,
+			R.layout.fragment_question_3options,
+			R.layout.fragment_question_3options,
+			R.layout.fragment_question_3options,
 			R.layout.fragment_question_2options
+	};
+
+	private static final String[] SHAREDPREF_KEY_LOOKUP_TABLE = new String[] {
+			"smartphone",
+			"os",
+			"price",
+			"busage",
+			"battery",
+			"storage",
+			"camera",
+			"screen",
+			"ram",
+			"weight"
 	};
 
 	public QuestionSlideFragment() {
@@ -109,7 +122,7 @@ public class QuestionSlideFragment extends Fragment {
 			tv_option2 = (RadioButton) rootView.findViewById(R.id.option2);
 
 			tv_option1.setText(options[0]);
-			tv_option2.setText(options[0]);
+			tv_option2.setText(options[1]);
 		}
 		else if(fragment == R.layout.fragment_question_3options) {
 			tv_questionTitle = (TextView) rootView.findViewById(R.id.questionText);
@@ -124,8 +137,8 @@ public class QuestionSlideFragment extends Fragment {
 			tv_option3 = (RadioButton) rootView.findViewById(R.id.option3);
 
 			tv_option1.setText(options[0]);
-			tv_option2.setText(options[0]);
-			tv_option3.setText(options[0]);
+			tv_option2.setText(options[1]);
+			tv_option3.setText(options[2]);
 		}
 		else if(fragment == R.layout.fragment_question_4options) {
 			tv_questionTitle = (TextView) rootView.findViewById(R.id.questionText);
@@ -141,9 +154,9 @@ public class QuestionSlideFragment extends Fragment {
 			tv_option4 = (RadioButton) rootView.findViewById(R.id.option4);
 
 			tv_option1.setText(options[0]);
-			tv_option2.setText(options[0]);
-			tv_option3.setText(options[0]);
-			tv_option4.setText(options[0]);
+			tv_option2.setText(options[1]);
+			tv_option3.setText(options[2]);
+			tv_option4.setText(options[3]);
 		}
 		else if(fragment == R.layout.fragment_question_slider) {
 			tv_questionTitle = (TextView) rootView.findViewById(R.id.questionText);
@@ -171,7 +184,7 @@ public class QuestionSlideFragment extends Fragment {
 				public void onStopTrackingTouch(SeekBar seekBar) {
 //					Toast.makeText(getActivity(),"seekbar stop", Toast.LENGTH_SHORT).show();
 					SharedPreferences.Editor editor = mSharedPref.edit();
-					editor.putString(getResources().getString(QUESTION_LOOKUP_TABLE[2 * mPageNumber]), seekValue.getText().toString());
+					editor.putString(SHAREDPREF_KEY_LOOKUP_TABLE[mPageNumber], seekValue.getText().toString());
 					editor.apply();
 				}
 			});
@@ -196,7 +209,10 @@ public class QuestionSlideFragment extends Fragment {
 						optionIndex = 2;
 					else if(checkedId == R.id.option4)
 						optionIndex = 3;
-					editor.putString(getResources().getString(QUESTION_LOOKUP_TABLE[2 * mPageNumber]), options[optionIndex]);
+					if(mPageNumber==1)
+						editor.putString(SHAREDPREF_KEY_LOOKUP_TABLE[mPageNumber], String.valueOf(optionIndex+1));
+					else
+						editor.putString(SHAREDPREF_KEY_LOOKUP_TABLE[mPageNumber], String.valueOf(optionIndex));
 					editor.apply();
 				}
 			});
