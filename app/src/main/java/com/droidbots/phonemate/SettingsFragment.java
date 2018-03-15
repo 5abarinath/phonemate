@@ -34,6 +34,7 @@ public class SettingsFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        ((OnFragmentInteractionListener) getActivity()).onFragmentInteraction(R.id.nav_settings);
         ViewGroup rootView = (ViewGroup) inflater.inflate(R.layout.fragment_settings, container, false);
         SharedPreferences mSharedPref = getActivity().getSharedPreferences("userAnswers",
                 Context.MODE_PRIVATE);
@@ -43,13 +44,6 @@ public class SettingsFragment extends Fragment {
         }
 
         return rootView;
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
@@ -81,6 +75,6 @@ public class SettingsFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(int id);
     }
 }

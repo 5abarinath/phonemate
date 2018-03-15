@@ -27,7 +27,8 @@ public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, QuestionnaireFragment.OnFragmentInteractionListener,
         PrivacyFragment.OnFragmentInteractionListener, ProfileFragment.OnFragmentInteractionListener,
         RecommendationFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener,
-        FeedbackFragment.OnFragmentInteractionListener, HomeFragment.OnFragmentInteractionListener{
+        FeedbackFragment.OnFragmentInteractionListener, HomeFragment.OnFragmentInteractionListener,
+        FirstScreenFragment.OnFragmentInteractionListener{
 
     NavigationView navigationView;
     SharedPreferences sharedPreferences;
@@ -56,7 +57,7 @@ public class HomeActivity extends AppCompatActivity
         editor.putBoolean("openingAppForTheFirstTime", false);
         editor.apply();
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.content_home, HomeFragment.newInstance())
+                .replace(R.id.content_home, FirstScreenFragment.newInstance())
                 .commit();
 
         if(openingAppForTheFirstTime) {
@@ -163,7 +164,7 @@ public class HomeActivity extends AppCompatActivity
     }
 
     @Override
-    public void onFragmentInteraction(Uri uri) {
-
+    public void onFragmentInteraction(int id) {
+        navigationView.setCheckedItem(id);
     }
 }
