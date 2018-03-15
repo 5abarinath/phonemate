@@ -49,6 +49,9 @@ public class QuestionnaireFragment extends Fragment {
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
         View result = inflater.inflate(R.layout.fragment_questionnaire, container, false);
+
+        ((OnFragmentInteractionListener) getActivity()).onFragmentInteraction(R.id.nav_questionnaire);
+
         pager = (ViewPager) result.findViewById(R.id.pagerName);
         pager.setAdapter(buildAdapter());
 
@@ -59,7 +62,14 @@ public class QuestionnaireFragment extends Fragment {
         nextPageBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                pager.setCurrentItem(pager.getCurrentItem() + 1, true);
+                if(pager.getCurrentItem() < 9)
+                    pager.setCurrentItem(pager.getCurrentItem() + 1, true);
+                else {
+                    getActivity().getSupportFragmentManager().beginTransaction()
+                            .replace(R.id.content_home, RecommendationFragment.newInstance())
+                            .addToBackStack(null)
+                            .commit();
+                }
             }
         });
 
@@ -76,13 +86,6 @@ public class QuestionnaireFragment extends Fragment {
 
     private PagerAdapter buildAdapter() {
         return(new QuestionSlidePagerAdapter(getChildFragmentManager()));
-    }
-
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
     }
 
     @Override
@@ -114,6 +117,6 @@ public class QuestionnaireFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(int id);
     }
 }

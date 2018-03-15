@@ -58,6 +58,8 @@ public class RecommendationFragment extends Fragment {
         // Inflate the layout for this fragment
         View fragment = inflater.inflate(R.layout.fragment_recommendation, container, false);
 
+        ((OnFragmentInteractionListener) getActivity()).onFragmentInteraction(R.id.nav_recommendation);
+
         final RecyclerView mRecyclerView = (RecyclerView) fragment.findViewById(R.id.recycler_view_recommend);
         RecyclerView.LayoutManager mLayoutManager = new LinearLayoutManager(getActivity());
         mRecyclerView.setLayoutManager(mLayoutManager);
@@ -146,13 +148,6 @@ public class RecommendationFragment extends Fragment {
         return fragment;
     }
 
-    // TODO: Rename method, update argument and hook method into UI event
-    public void onButtonPressed(Uri uri) {
-        if (mListener != null) {
-            mListener.onFragmentInteraction(uri);
-        }
-    }
-
     @Override
     public void onAttach(Context context) {
         super.onAttach(context);
@@ -182,6 +177,6 @@ public class RecommendationFragment extends Fragment {
      */
     public interface OnFragmentInteractionListener {
         // TODO: Update argument type and name
-        void onFragmentInteraction(Uri uri);
+        void onFragmentInteraction(int id);
     }
 }

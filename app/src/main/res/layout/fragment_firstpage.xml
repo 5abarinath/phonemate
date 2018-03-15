@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout
+    xmlns:android="http://schemas.android.com/apk/res/android" android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:paddingLeft="20dp"
+    android:paddingRight="20dp"
+    android:background="@drawable/bg4">
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="100dp"
+        android:id="@+id/browse_btn"
+        android:text="Browse Devices"
+        android:layout_centerHorizontal="true"
+        android:background="@color/colorPrimaryLight"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/browse_btn"
+        android:id="@+id/recommend_btn"
+        android:text="Let us Recommend a device"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="75dp"
+        android:background="@color/colorPrimaryLight"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/recommend_btn"
+        android:layout_marginTop="75dp"
+        android:id="@+id/settings_btn"
+        android:background="@color/colorPrimaryLight"
+        android:layout_centerHorizontal="true"
+        android:text="Settings"/>
+
+</RelativeLayout>
