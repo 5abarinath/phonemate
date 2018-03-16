@@ -13,13 +13,14 @@
     <string name="nav_privacy">Privacy Policy</string>
     <string name="menu_logout">Logout</string>
     <string name="questionnaire">Questionnaire</string>
+    <string name="about">About</string>
 
     <string name="hello_home_fragment">Hello home fragment</string>
     <string name="hello_profile_fragment">Hello profile fragment</string>
     <string name="hello_recommendation_fragment">Hello recommendation fragment</string>
     <string name="hello_feedback_fragment">Hello feedback fragment</string>
     <string name="hello_settings_fragment">Hello settings fragment</string>
-    <string name="hello_privacy_fragment">Hello privacy fragment</string>
+    <string name="hello_privacy_fragment">About Us!</string>
 
     <string name="category0">Smartphone</string>
     <string name="question0">Do you want a smartphone?</string>
@@ -35,8 +36,8 @@
     <string-array name="options1">
         <item>Android</item>
         <item>iOS</item>
+        <item>Either Android or iOS</item>
         <item>Other</item>
-        <item>Option 2&#8211;4</item>
     </string-array>
 
     <string name="category2">Price</string>
@@ -148,6 +149,7 @@ Lorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu cursus massa. 
     <string name="specs_colors">Colors</string>
     <string name="specs_headingL">Category</string>
     <string name="specs_headingR">Description</string>
+    <string name="specs_review">Reviews Link</string>
 
     <string name="signup_header"><b><u>Sign Up</u></b></string>
 </resources>

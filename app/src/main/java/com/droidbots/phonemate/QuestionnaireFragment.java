@@ -77,7 +77,10 @@ public class QuestionnaireFragment extends Fragment {
         skipBtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                getActivity().onBackPressed();
+                getActivity().getSupportFragmentManager().beginTransaction()
+                        .replace(R.id.content_home, RecommendationFragment.newInstance())
+                        .addToBackStack(null)
+                        .commit();
             }
         });
 

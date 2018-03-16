@@ -56,7 +56,7 @@ public class QuestionSlideFragment extends Fragment {
 	 */
 	private static final int[] FRAGMENT_LOOKUP_TABLE = new int[] {
 			R.layout.fragment_question_2options,
-			R.layout.fragment_question_3options,
+			R.layout.fragment_question_4options,
 			R.layout.fragment_question_slider,
 			R.layout.fragment_question_3options,
 			R.layout.fragment_question_3options,

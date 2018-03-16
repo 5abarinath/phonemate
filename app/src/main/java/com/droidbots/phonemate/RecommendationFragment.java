@@ -94,22 +94,22 @@ public class RecommendationFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Phone>> call, Response<List<Phone>> response) {
                 recommendedDataset = response.body();
-                if(recommendedDataset == null) {
-                    Log.d("NULL DATASET", "onResponse: kappa123");
-                    AlertDialog.Builder builder;
-                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
-                        builder = new AlertDialog.Builder(getActivity(), android.R.style.Theme_Material_Dialog_Alert);
-                    } else {
-                        builder = new AlertDialog.Builder(getActivity());
-                    }
-                    builder.setTitle("Oops")
-                            .setMessage(recommendedDataset.get(0).getMessage())
-                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
-                                public void onClick(DialogInterface dialog, int which) {
-                                    // do nothing
-                                }
-                            })
-                            .show();
+                if(response.body().get(0).getStatus().equals("Failure")) {
+//                    Log.d("NULL DATASET", "onResponse: kappa123");
+//                    AlertDialog.Builder builder;
+//                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
+//                        builder = new AlertDialog.Builder(getActivity(), android.R.style.Theme_Material_Dialog_Alert);
+//                    } else {
+//                        builder = new AlertDialog.Builder(getActivity());
+//                    }
+//                    builder.setTitle("Oops")
+//                            .setMessage(recommendedDataset.get(0).getMessage())
+//                            .setNegativeButton(android.R.string.no, new DialogInterface.OnClickListener() {
+//                                public void onClick(DialogInterface dialog, int which) {
+//                                    // do nothing
+//                                }
+//                            })
+//                            .show();
                 }
                 MyRecyclerViewAdapter mAdapter = new MyRecyclerViewAdapter(getActivity(), recommendedDataset,
                         new MyRecyclerViewAdapter.OnItemClickListener() {

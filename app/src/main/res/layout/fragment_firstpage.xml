@@ -33,6 +33,6 @@
         android:id="@+id/settings_btn"
         android:background="@color/colorPrimaryLight"
         android:layout_centerHorizontal="true"
-        android:text="Settings"/>
+        android:text="About"/>
 
 </RelativeLayout>
