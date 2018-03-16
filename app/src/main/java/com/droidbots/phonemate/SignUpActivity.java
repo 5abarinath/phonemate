@@ -83,7 +83,7 @@ public class SignUpActivity extends AppCompatActivity {
         }
 
         if(!errorFound) {
-            User user = new User(emailVal, pw1, fname, lname);
+            User user = new User(emailVal, pw1, fname, lname, null, null, null, null);
             initiateSignUp(user);
         }
     }

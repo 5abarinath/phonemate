@@ -6,8 +6,20 @@
     tools:context="com.droidbots.phonemate.PrivacyFragment">
 
     <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:text="@string/nav_privacy"
+        android:textStyle="bold"
+        android:textSize="20sp"/>
+
+    <TextView
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:text="@string/hello_privacy_fragment" />
+        android:layout_height="wrap_content"
+        android:text="@string/hello_privacy_fragment"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="80dp"
+        />
 
 </RelativeLayout>

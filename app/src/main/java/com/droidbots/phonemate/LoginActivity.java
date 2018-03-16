@@ -8,17 +8,22 @@ import android.content.Intent;
 import android.content.SharedPreferences;
 import android.os.Build;
 import android.os.Bundle;
+import android.support.annotation.NonNull;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
+import android.support.v7.widget.AppCompatButton;
 import android.text.TextUtils;
 import android.util.Log;
 import android.util.Patterns;
 import android.view.KeyEvent;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.View.OnClickListener;
 import android.view.inputmethod.EditorInfo;
 import android.widget.AutoCompleteTextView;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -51,7 +56,10 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
     private EditText mPasswordView;
     private View mProgressView;
     private View mLoginFormView;
-    private TextView newUser;
+    private AppCompatButton buttonConfirm;
+    private EditText editTextConfirmOtp;
+    private ProgressBar OTPprogressbar;
+    private AlertDialog alertDialog;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -59,7 +67,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
         setContentView(R.layout.activity_login);
         // Set up the login form.
         mEmailView = findViewById(R.id.email);
-        newUser = findViewById(R.id.prompt_sign_up);
+        TextView newUser = findViewById(R.id.prompt_sign_up);
 
         newUser.setOnClickListener(new OnClickListener() {
             @Override
@@ -90,6 +98,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
 
         mLoginFormView = findViewById(R.id.login_form);
         mProgressView = findViewById(R.id.login_progress);
+        TextView mForgotPasswordView = findViewById(R.id.forgotPwd_textView);
         
         // Configure sign-in to request the user's ID, email address, and basic
         // profile. ID and basic profile are included in DEFAULT_SIGN_IN.
@@ -103,6 +112,64 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
         mGoogleSignInClient = GoogleSignIn.getClient(this, gso);
 
         findViewById(R.id.google_sign_in_button).setOnClickListener(this);
+
+        mForgotPasswordView.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                LayoutInflater layoutInflater = LayoutInflater.from(getApplicationContext());
+                View confirmDialog = layoutInflater.inflate(R.layout.dialog_email, null);
+                //Initializing confirm button fo dialog box and edittext of dialog box
+                buttonConfirm = confirmDialog.findViewById(R.id.buttonConfirm);
+                editTextConfirmOtp = confirmDialog.findViewById(R.id.editTextOtp);
+                OTPprogressbar = confirmDialog.findViewById(R.id.OTPProgress);
+
+                //Creating an AlertDialog builder
+                AlertDialog.Builder alert = new AlertDialog.Builder(getApplicationContext());
+
+                //Adding our dialog box to the view of alert dialog
+                alert.setView(confirmDialog);
+
+                //Creating an alert dialog
+                alertDialog = alert.create();
+
+                //Displaying the alert dialog
+                alertDialog.show();
+
+                buttonConfirm.setOnClickListener(new View.OnClickListener() {
+                    @Override
+                    public void onClick(View view) {
+                        String email = editTextConfirmOtp.getText().toString();
+                        if(!isEmailValid(email))
+                            return;
+                        confirmEmailFromServer();
+                    }
+                });
+            }
+        });
+    }
+
+    private void confirmEmailFromServer() {
+        showEmailBar();
+
+        String email = editTextConfirmOtp.getText().toString();
+
+        APIService service = APIClient.getClient().create(APIService.class);
+
+        Call<LoginMsg> forgotCall = service.resetPassword(email);
+
+        forgotCall.enqueue(new Callback<LoginMsg>() {
+            @Override
+            public void onResponse(@NonNull Call<LoginMsg> call, @NonNull Response<LoginMsg> response) {
+                hideEmailBar();
+                Toast.makeText(getApplicationContext(), response.body().getMsg(), Toast.LENGTH_SHORT).show();
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<LoginMsg> call, @NonNull Throwable t) {
+                hideEmailBar();
+                Toast.makeText(getApplicationContext(), "Please check your internet connection", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 
     @Override
@@ -151,9 +218,10 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
             String email = account.getEmail();
             String[] firstName = account.getDisplayName().split(" ", 2);
             String lastName = account.getFamilyName();
+            final String photoURI = account.getPhotoUrl().toString();
 
             APIService service = APIClient.getClient().create(APIService.class);
-            User user = new User(email, null, firstName[0], lastName);
+            User user = new User(email, null, firstName[0], lastName, null, null, null, null);
             Call<LoginMsg> loginCall = service.validateGoogleSignIn(user, idToken);
 
             loginCall.enqueue(new Callback<LoginMsg>() {
@@ -164,6 +232,8 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
                         mSharedPreferenceEditor.putInt("loginMethod", 1);
                         mSharedPreferenceEditor.putString("token", response.body().getToken());
                         mSharedPreferenceEditor.putString("idToken", idToken);
+                        mSharedPreferenceEditor.putString("profpic", photoURI);
+                        mSharedPreferenceEditor.putBoolean("googlePhoto", true);
                         mSharedPreferenceEditor.apply();
                         // Signed in successfully, show authenticated UI.
                         updateUI(account);
@@ -241,7 +311,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
     }
 
     private boolean isPasswordValid(String password) {
-        return password.length() > 6;
+        return password.length() >= 6;
     }
 
     /**
@@ -292,7 +362,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
 
         APIService service = APIClient.getClient().create(APIService.class);
 
-        User user = new User(email, password, null, null);
+        User user = new User(email, password, null, null, null, null, null, null);
         Call<LoginMsg> loginCall = service.validateLogin(user);
 
         loginCall.enqueue(new Callback<LoginMsg>() {
@@ -303,6 +373,7 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
                     SharedPreferences.Editor mSharedPreferenceEditor = getSharedPreferences("login_pref", MODE_PRIVATE).edit();
                     mSharedPreferenceEditor.putInt("loginMethod", 0);
                     mSharedPreferenceEditor.putString("token", response.body().getToken());
+                    mSharedPreferenceEditor.putBoolean("googlePhoto", false);
                     mSharedPreferenceEditor.apply();
                     startActivity(new Intent(getApplicationContext(), HomeActivity.class));
                 } else {
@@ -315,6 +386,18 @@ public class LoginActivity extends AppCompatActivity implements OnClickListener 
                 Toast.makeText(getApplicationContext(), "Could not connect to server. Please check your internet connection.", Toast.LENGTH_SHORT).show();
             }
         });
+    }
+
+    private void showEmailBar() {
+        editTextConfirmOtp.setEnabled(false);
+        buttonConfirm.setEnabled(false);
+        OTPprogressbar.setVisibility(View.VISIBLE);
+    }
+
+    private void hideEmailBar() {
+        editTextConfirmOtp.setEnabled(true);
+        buttonConfirm.setEnabled(true);
+        OTPprogressbar.setVisibility(View.GONE);
     }
 }
 

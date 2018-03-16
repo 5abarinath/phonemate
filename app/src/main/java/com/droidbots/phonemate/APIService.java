@@ -4,12 +4,11 @@ import java.util.List;
 
 import retrofit2.Call;
 import retrofit2.http.Body;
-import retrofit2.http.Field;
-import retrofit2.http.FormUrlEncoded;
 import retrofit2.http.GET;
 import retrofit2.http.Header;
 import retrofit2.http.Headers;
 import retrofit2.http.POST;
+import retrofit2.http.PUT;
 
 /**
  * Created by vishvanatarajan on 8/2/18.
@@ -25,8 +24,16 @@ public interface APIService {
     Call<LoginMsg> validateGoogleSignIn(@Body User user, @Header("Authorization") String idToken);
 
     @Headers("Content-Type: application/json")
-    @POST("users/google/logout")
-    Call<LogoutMSG> performGoogleSignOut(@Header("Authorization") String idToken);
+    @POST("users/profile")
+    Call<User> getUserProfile(@Header("Authorization") String idToken);
+
+    @Headers("Content-Type: application/json")
+    @PUT("users/profile/update")
+    Call<ProfileMsg> updateUserProfile(@Body User user, @Header("Authorization") String idToken);
+
+    @Headers("Content-Type: application/json")
+    @PUT("users/forgot/password")
+    Call<LoginMsg> resetPassword(@Body String email);
 
     @Headers("Content-Type: application/json")
     @GET("phones/featured")

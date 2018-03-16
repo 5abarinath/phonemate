@@ -2,7 +2,6 @@ package com.droidbots.phonemate;
 
 
 import android.content.Context;
-import android.net.Uri;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
@@ -46,16 +45,6 @@ public class FirstScreenFragment extends Fragment {
             public void onClick(View v) {
                 getActivity().getSupportFragmentManager().beginTransaction()
                         .replace(R.id.content_home, HomeFragment.newInstance())
-                        .addToBackStack(null)
-                        .commit();
-            }
-        });
-
-        btn_settings.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                getActivity().getSupportFragmentManager().beginTransaction()
-                        .replace(R.id.content_home, SettingsFragment.newInstance())
                         .addToBackStack(null)
                         .commit();
             }

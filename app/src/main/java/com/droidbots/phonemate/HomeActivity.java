@@ -1,33 +1,46 @@
 package com.droidbots.phonemate;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
+import android.graphics.Bitmap;
+import android.graphics.BitmapFactory;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
+import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
+import android.util.Base64;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
+import com.bumptech.glide.Glide;
+import com.bumptech.glide.request.target.BitmapImageViewTarget;
 import com.google.android.gms.auth.api.signin.GoogleSignIn;
 import com.google.android.gms.auth.api.signin.GoogleSignInClient;
 import com.google.android.gms.auth.api.signin.GoogleSignInOptions;
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 
+import retrofit2.Call;
+import retrofit2.Callback;
+import retrofit2.Response;
+
 public class HomeActivity extends AppCompatActivity
         implements NavigationView.OnNavigationItemSelectedListener, QuestionnaireFragment.OnFragmentInteractionListener,
         PrivacyFragment.OnFragmentInteractionListener, ProfileFragment.OnFragmentInteractionListener,
-        RecommendationFragment.OnFragmentInteractionListener, SettingsFragment.OnFragmentInteractionListener,
-        FeedbackFragment.OnFragmentInteractionListener, HomeFragment.OnFragmentInteractionListener,
+        RecommendationFragment.OnFragmentInteractionListener, HomeFragment.OnFragmentInteractionListener,
         FirstScreenFragment.OnFragmentInteractionListener{
 
     NavigationView navigationView;
@@ -53,7 +66,6 @@ public class HomeActivity extends AppCompatActivity
         sharedPreferences = getPreferences(MODE_PRIVATE);
         boolean openingAppForTheFirstTime = sharedPreferences.getBoolean("openingAppForTheFirstTime", true);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        //TODO create sharedPref only after closing questionnaireFragment
         editor.putBoolean("openingAppForTheFirstTime", false);
         editor.apply();
         getSupportFragmentManager().beginTransaction()
@@ -66,6 +78,8 @@ public class HomeActivity extends AppCompatActivity
                     .addToBackStack(null)
                     .commit();
         }
+
+        getProfileInfo();
     }
 
     @Override
@@ -83,6 +97,12 @@ public class HomeActivity extends AppCompatActivity
         // Inflate the menu; this adds items to the action bar if it is present.
         getMenuInflater().inflate(R.menu.home, menu);
         return true;
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        getProfileInfo();
     }
 
     @Override
@@ -125,7 +145,7 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public void onDestroy() {
         super.onDestroy();
-        Log.d("WTFWTF", "lol123");
+        Log.d("TAG HERE", "lol123");
     }
 
     @SuppressWarnings("StatementWithEmptyBody")
@@ -142,10 +162,6 @@ public class HomeActivity extends AppCompatActivity
             fragment = ProfileFragment.newInstance();
         } else if (id == R.id.nav_recommendation) {
             fragment = RecommendationFragment.newInstance();
-        } else if (id == R.id.nav_feedback) {
-            fragment = FeedbackFragment.newInstance();
-        } else if (id == R.id.nav_settings) {
-            fragment = SettingsFragment.newInstance();
         } else if (id == R.id.nav_privacy) {
             fragment = PrivacyFragment.newInstance();
         } else if (id == R.id.nav_questionnaire) {
@@ -166,5 +182,64 @@ public class HomeActivity extends AppCompatActivity
     @Override
     public void onFragmentInteraction(int id) {
         navigationView.setCheckedItem(id);
+    }
+
+    public Bitmap decodeBase64(String input) {
+        byte[] decodedByte = Base64.decode(input, 0);
+        return BitmapFactory.decodeByteArray(decodedByte, 0, decodedByte.length);
+    }
+
+    public void getProfileInfo() {
+        View headerView = navigationView.getHeaderView(0);
+        final TextView navName = headerView.findViewById(R.id.nav_header_nameTextView);
+        final TextView navEmail = headerView.findViewById(R.id.nav_header_emailTextView);
+        final ImageView navProfilePic = headerView.findViewById(R.id.nav_header_imageView);
+        SharedPreferences mSharedPreferences = getApplicationContext().getSharedPreferences("login_pref", Context.MODE_PRIVATE);
+        String token = mSharedPreferences.getString("token", null);
+        String profpic = mSharedPreferences.getString("profpic", null);
+        boolean google = mSharedPreferences.getBoolean("googlePhoto", false);
+        if(token == null) {
+            Toast.makeText(getApplicationContext(), "Invalid login", Toast.LENGTH_SHORT).show();
+            startActivity(new Intent(this, LoginActivity.class));
+        }
+        if(profpic == null || profpic == "")
+            navProfilePic.setImageResource(getResources().getIdentifier("ic_launcher_round", "mipmap", getPackageName()));
+        else {
+            if(google) {
+                Glide.with(this)
+                        .load(profpic)
+                        .asBitmap()
+                        .placeholder(R.mipmap.ic_launcher_round)
+                        .error(R.mipmap.ic_launcher_round)
+                        .override(150, 150)
+                        .centerCrop()
+                        .into(new BitmapImageViewTarget(navProfilePic) {
+                            @Override
+                            protected void setResource(Bitmap resource) {
+                                RoundedBitmapDrawable circularBitmapDrawable =
+                                        RoundedBitmapDrawableFactory.create(getApplicationContext().getResources(), resource);
+                                circularBitmapDrawable.setCircular(true);
+                                navProfilePic.setImageDrawable(circularBitmapDrawable);
+                            }
+                        });
+            } else {
+                navProfilePic.setImageBitmap(decodeBase64(profpic));
+            }
+        }
+
+        APIService service = APIClient.getClient().create(APIService.class);
+        Call<User> navHeaderCall = service.getUserProfile(token);
+        navHeaderCall.enqueue(new Callback<User>() {
+            @Override
+            public void onResponse(@NonNull Call<User> call, @NonNull Response<User> response) {
+                navName.setText(response.body().getName());
+                navEmail.setText(response.body().getEmail());
+            }
+
+            @Override
+            public void onFailure(@NonNull Call<User> call, @NonNull Throwable t) {
+                Toast.makeText(getApplicationContext(), "Please check your internet connection", Toast.LENGTH_SHORT).show();
+            }
+        });
     }
 }

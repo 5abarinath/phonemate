@@ -1,12 +1,8 @@
 package com.droidbots.phonemate;
 
-import android.app.AlertDialog;
 import android.content.Context;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.net.Uri;
-import android.os.Build;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.support.v7.widget.LinearLayoutManager;
@@ -16,7 +12,6 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -94,7 +89,7 @@ public class RecommendationFragment extends Fragment {
             @Override
             public void onResponse(Call<List<Phone>> call, Response<List<Phone>> response) {
                 recommendedDataset = response.body();
-                if(response.body().get(0).getStatus().equals("Failure")) {
+//                if(response.body().get(0).getStatus().equals("Failure")) {
 //                    Log.d("NULL DATASET", "onResponse: kappa123");
 //                    AlertDialog.Builder builder;
 //                    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP) {
@@ -110,7 +105,7 @@ public class RecommendationFragment extends Fragment {
 //                                }
 //                            })
 //                            .show();
-                }
+//                }
                 MyRecyclerViewAdapter mAdapter = new MyRecyclerViewAdapter(getActivity(), recommendedDataset,
                         new MyRecyclerViewAdapter.OnItemClickListener() {
                             @Override
