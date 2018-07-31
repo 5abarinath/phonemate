@@ -4,3 +4,6 @@ PhoneMate is a mobile recommendation Android app which will be able to suggest b
 The user will have to answer a few questions and the results will be based on their respose and from online reviews.
 
 This repository is only for the PhoneMate App.
+
+The backend code can be found here: 
+https://github.com/vishvanatarajan/Phonemate-App-Backend
